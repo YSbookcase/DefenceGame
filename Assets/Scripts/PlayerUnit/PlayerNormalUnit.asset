@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93ceb3c6a510f7247a11dd675a7a91b2, type: 3}
-  m_Name: Test
+  m_Name: PlayerNormalUnit
   m_EditorClassIdentifier: 
   Name: BasicUnit
   Description: "\uC77C\uC815 \uC2DC\uAC04\uB9C8\uB2E4 \uAE30\uBCF8 \uACF5\uACA9\uC744
