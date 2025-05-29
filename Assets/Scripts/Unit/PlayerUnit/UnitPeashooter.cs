@@ -10,12 +10,27 @@ public class UnitPeashooter : Unit
 
     public override void Init(UnitData data)
     {
+        Debug.Log("[UnitPeashooter] Init 호출됨");
         base.Init(data);
+     
         if (data is PeashooterData peashooter)
         {
             attackDelay = peashooter.attackDelay;
             range = peashooter.range;
-            StartCoroutine(AttackRoutine());
+
+            // Weapon 설정
+            UnitWeapon weapon = GetComponent<UnitWeapon>();
+            if (weapon != null)
+            {
+                weapon.SetWeaponStats(
+                    peashooter.attackPower,
+                    peashooter.bulletSpeed,
+                    peashooter.attackDelay
+                );
+                weapon.StartShooting();
+            }
+
+            StartCoroutine(AttackRoutine()); // 선택적
         }
     }
 

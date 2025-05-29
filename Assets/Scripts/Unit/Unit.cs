@@ -6,12 +6,13 @@ using UnityEngine;
 
 public class Unit : PooledObject, IDamagable
 {
-
+    
     private UnitData _data;
     private int _currentHp;
 
     public virtual void Init(UnitData data)
     {
+        Debug.Log("[Unit] Init »£√‚µ ");
         _data = data;
         _currentHp = data.maxHp;
     }

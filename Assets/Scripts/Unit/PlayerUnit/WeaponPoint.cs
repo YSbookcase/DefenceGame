@@ -50,7 +50,7 @@ public class WeaponPoint : MonoBehaviour
         Bullet bullet = GetBullet();
         if (bullet != null)
         {
-            bullet.Init(this); //  WeaponPoint 주입
+            //bullet.Init(this); //  WeaponPoint 주입
             bullet.transform.position = muzzlePoint.position;
             bullet.transform.rotation = muzzlePoint.rotation;
             bullet.Fire(muzzlePoint.forward, bulletSpeed);

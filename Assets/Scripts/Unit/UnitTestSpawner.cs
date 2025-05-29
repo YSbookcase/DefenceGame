@@ -16,7 +16,16 @@ public class UnitTestSpawner : MonoBehaviour
     {
         Quaternion rotation = Quaternion.Euler(0, 90, 0);
         GameObject go = Instantiate(data.unitPrefab, pos, rotation);
+        // Unit을 가져와서 다운캐스팅
         Unit unit = go.GetComponent<Unit>();
-        unit.Init(data);
+
+        if (unit is UnitPeashooter peashooterUnit)
+        {
+            peashooterUnit.Init(data); // 오버라이드된 Init() 호출됨
+        }
+        else
+        {
+            unit.Init(data); // 기본 Unit이면 기존 Init 호출
+        }
     }
 }

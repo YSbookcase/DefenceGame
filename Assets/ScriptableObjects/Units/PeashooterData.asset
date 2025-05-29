@@ -18,7 +18,9 @@ MonoBehaviour:
   Icon: {fileID: 0}
   maxHp: 5
   attackPower: 1
-  attackDelay: 5
+  attackDelay: 1
   range: 30
-  unitPrefab: {fileID: 0}
+  money: 100
+  unitPrefab: {fileID: 2953164585944645855, guid: f0f1b3b93c55da3409d0d921fcf68f3d,
+    type: 3}
   bulletSpeed: 10

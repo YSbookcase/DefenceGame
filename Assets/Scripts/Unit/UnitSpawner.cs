@@ -10,13 +10,19 @@ public class UnitSpawner : MonoBehaviour
     {
         UnitData data = unitDatas[index];
         GameObject go = Instantiate(data.unitPrefab, position, Quaternion.identity);
+        // Unit을 가져와서 다운캐스팅
         Unit unit = go.GetComponent<Unit>();
-        unit.Init(data);
 
-        if (data is PeashooterData peashooter)
+        if (unit is UnitPeashooter peashooterUnit)
         {
-            Debug.Log($"총알 속도: {peashooter.bulletSpeed}");
+            peashooterUnit.Init(data); // 오버라이드된 Init() 호출됨
         }
+        else
+        {
+            unit.Init(data); // 기본 Unit이면 기존 Init 호출
+        }
+
+
 
 
     }
