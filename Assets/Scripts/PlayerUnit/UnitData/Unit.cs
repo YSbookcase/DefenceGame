@@ -1,15 +1,16 @@
+using DesignPattern;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 
-public class Unit : MonoBehaviour
+public class Unit : PooledObject, IDamagable
 {
 
     private UnitData _data;
     private int _currentHp;
 
-    public void Init(UnitData data)
+    public virtual void Init(UnitData data)
     {
         _data = data;
         _currentHp = data.maxHp;
@@ -32,5 +33,17 @@ public class Unit : MonoBehaviour
         // ReturnPool(), Destroy, ¿Ã∆Â∆Æ µÓ
         gameObject.SetActive(false);
     }
+
+    public string GetUnitName()
+    {
+        return _data != null ? _data.unitName : "(unknown)";
+    }
+
+    public int GetAttackPower()
+    {
+        return _data != null ? _data.attackPower : 0;
+    }
+
+
 
 }

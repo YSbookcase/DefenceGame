@@ -14,7 +14,8 @@ public class UnitTestSpawner : MonoBehaviour
 
     private void Spawn(UnitData data, Vector3 pos)
     {
-        GameObject go = Instantiate(data.unitPrefab, pos, Quaternion.identity);
+        Quaternion rotation = Quaternion.Euler(0, 90, 0);
+        GameObject go = Instantiate(data.unitPrefab, pos, rotation);
         Unit unit = go.GetComponent<Unit>();
         unit.Init(data);
     }

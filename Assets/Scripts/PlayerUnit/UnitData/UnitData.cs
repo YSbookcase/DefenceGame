@@ -13,6 +13,7 @@ public abstract class UnitData : ScriptableObject
     public int attackPower;
     public float attackDelay;
     public float range;
+    public int money;
     public GameObject unitPrefab;
 
 }
