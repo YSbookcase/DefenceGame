@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7939330a9e5fb934f9ca8b2548a8b10a, type: 3}
+  m_Name: ZombieData
+  m_EditorClassIdentifier: 
+  unitName: Zombi
+  Description: "\uB77C\uC778\uC744 \uB530\uB77C \uC9C1\uC9C4\uD558\uBA70 \uC624\uB978\uCABD\uC5D0\uC11C
+    \uC67C\uCABD\uC73C\uB85C \uC774\uB3D9 \uD50C\uB808\uC774\uC5B4 \uC720\uB2DB\uC5D0
+    \uADFC\uC811\uD558\uBA74 \uADFC\uC811 \uACF5\uACA9\uC744 \uD558\uBA70 \uB370\uBBF8\uC9C0\uB97C
+    \uC785\uD798."
+  Icon: {fileID: 0}
+  maxHp: 10
+  attackPower: 1
+  attackDelay: 1
+  range: 0.6
+  money: 0
+  unitPrefab: {fileID: 3486634704476419877, guid: 0c3bf0374963c484394b32ee5dd83833,
+    type: 3}
+  moveSpeed: 0.5

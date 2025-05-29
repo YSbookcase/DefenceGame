@@ -6,32 +6,60 @@ using UnityEngine;
 
 public class Unit : PooledObject, IDamagable
 {
-    
-    private UnitData _data;
-    private int _currentHp;
 
-    public virtual void Init(UnitData data)
+    [SerializeField] private UnitData testDataForEditorOnly;
+    private bool _isInitialized = false;
+
+
+
+
+    protected UnitData _data;
+    protected int _currentHp;
+
+    public Faction faction;
+
+
+
+    private void Start()
     {
-        Debug.Log("[Unit] Init 호출됨");
-        _data = data;
-        _currentHp = data.maxHp;
+#if UNITY_EDITOR
+        if (!_isInitialized && testDataForEditorOnly != null)
+        {
+            Init(testDataForEditorOnly);
+            Debug.Log($"[Unit] 테스트용 데이터로 Init 실행: {_data.unitName}");
+        }
+#endif
     }
+
 
     private void Update()
     {
         // 공격, 탐지 등 구현 가능
     }
 
-    public void TakeDamage(int damage)
+
+    public virtual void Init(UnitData data)
+    {
+        Debug.Log("[Unit] Init 호출됨");
+        _data = data;
+        _currentHp = data.maxHp;
+        Debug.Log($"[Init] {data.unitName} 체력 초기화: {_currentHp}");
+        _isInitialized = true;
+    }
+
+
+    public virtual void TakeDamage(int damage)
     {
         _currentHp -= damage;
+        Debug.Log($"[Unit] 피해 {damage} → 남은 체력 {_currentHp}");
+
         if (_currentHp <= 0)
             Die();
     }
 
-    private void Die()
+    protected virtual void Die()
     {
-        // ReturnPool(), Destroy, 이펙트 등
+        Debug.Log($"[Unit] 사망: {gameObject.name}");
         gameObject.SetActive(false);
     }
 
@@ -45,6 +73,15 @@ public class Unit : PooledObject, IDamagable
         return _data != null ? _data.attackPower : 0;
     }
 
+    public bool IsAlive()
+    {
+        return gameObject.activeInHierarchy && _currentHp > 0;
+    }
 
+}
 
+public enum Faction
+{
+    Player,
+    Enemy
 }

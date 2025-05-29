@@ -739,8 +739,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3254946276072894093397b484aaf95a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  testUnit: {fileID: 11400000, guid: f336e85aa7671cf4c86164de16c439a3, type: 2}
-  spawnPosition: {x: 0, y: 0, z: 0}
+  testUnit: {fileID: 11400000, guid: 9953907e967668e4b9cb7e71f7d508a9, type: 2}
+  spawnPosition: {x: 24, y: 0, z: 6}
 --- !u!4 &1932922377
 Transform:
   m_ObjectHideFlags: 0
@@ -882,15 +882,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2497616109483679890, guid: 0c3bf0374963c484394b32ee5dd83833,
+        type: 3}
+      propertyPath: faction
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2497616109483679890, guid: 0c3bf0374963c484394b32ee5dd83833,
+        type: 3}
+      propertyPath: moveSpeed
+      value: 0.4
+      objectReference: {fileID: 0}
     - target: {fileID: 3486634704476419877, guid: 0c3bf0374963c484394b32ee5dd83833,
         type: 3}
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 3486634704476419877, guid: 0c3bf0374963c484394b32ee5dd83833,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892698371710185714, guid: 0c3bf0374963c484394b32ee5dd83833,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3892698371710185714, guid: 0c3bf0374963c484394b32ee5dd83833,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3966731012240164031, guid: 0c3bf0374963c484394b32ee5dd83833,
+        type: 3}
+      propertyPath: m_Layer
+      value: 7
+      objectReference: {fileID: 0}
     - target: {fileID: 8784817554790727688, guid: 0c3bf0374963c484394b32ee5dd83833,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.81
+      value: 23.95
       objectReference: {fileID: 0}
     - target: {fileID: 8784817554790727688, guid: 0c3bf0374963c484394b32ee5dd83833,
         type: 3}
@@ -900,7 +930,7 @@ PrefabInstance:
     - target: {fileID: 8784817554790727688, guid: 0c3bf0374963c484394b32ee5dd83833,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 5.79
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8784817554790727688, guid: 0c3bf0374963c484394b32ee5dd83833,
         type: 3}
@@ -1100,10 +1130,10 @@ SceneRoots:
   - {fileID: 410087041}
   - {fileID: 832575519}
   - {fileID: 8902471990834460889}
-  - {fileID: 5763318279497651533}
   - {fileID: 3526097943106063052}
   - {fileID: 1343888321}
   - {fileID: 1768272361}
   - {fileID: 8730035707379581682}
   - {fileID: 1932922377}
   - {fileID: 1700007235}
+  - {fileID: 5763318279497651533}

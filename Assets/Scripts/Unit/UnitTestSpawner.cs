@@ -14,7 +14,14 @@ public class UnitTestSpawner : MonoBehaviour
 
     private void Spawn(UnitData data, Vector3 pos)
     {
-        Quaternion rotation = Quaternion.Euler(0, 90, 0);
+        Quaternion rotation;
+
+        if (data is PeashooterData)
+            rotation = Quaternion.Euler(0, 90, 0); // 오른쪽을 향하게 (Peashooter가 왼쪽을 쏘게 하기 위해)
+       
+        else
+            rotation = Quaternion.identity;
+
         GameObject go = Instantiate(data.unitPrefab, pos, rotation);
         // Unit을 가져와서 다운캐스팅
         Unit unit = go.GetComponent<Unit>();

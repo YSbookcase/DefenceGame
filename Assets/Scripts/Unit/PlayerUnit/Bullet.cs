@@ -40,12 +40,12 @@ public class Bullet : PooledObject
         _rigidbody.velocity = direction.normalized * speed;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        var damagable = collision.gameObject.GetComponent<IInteraction>();
+        var damagable = other.GetComponent<IDamagable>();
         if (damagable != null)
         {
-            damagable.IInteraction(gameObject, attackPower);
+            damagable.TakeDamage(attackPower);
         }
 
         ReturnToPool();
