@@ -93,9 +93,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4873218203849084378}
   - component: {fileID: 7248173727538918319}
-  - component: {fileID: 1244264693282106440}
+  - component: {fileID: 7745147282105009654}
   m_Layer: 0
-  m_Name: PlayerNormalUnit
+  m_Name: UnitPeashooter 3
   m_TagString: PlayerUnit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -141,7 +141,7 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &1244264693282106440
+--- !u!114 &7745147282105009654
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -150,11 +150,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 2953164585944645855}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c28cdcc43c88eb4589c450e541e4226, type: 3}
+  m_Script: {fileID: 11500000, guid: 93ceb3c6a510f7247a11dd675a7a91b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canon: {fileID: 3405941908315742253}
-  delay: 0.5
 --- !u!1 &4463898682695382591
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,7 +162,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7112281562962059863}
-  - component: {fileID: 3405941908315742253}
   m_Layer: 0
   m_Name: ShootPoint
   m_TagString: Untagged
@@ -187,25 +184,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4873218203849084378}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3405941908315742253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4463898682695382591}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dcf81e54c1d956438f3af74672b3539, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bulletPrefab: {fileID: 1594366794964539770, guid: 367fb604563bc0f46a9161372fe97cd0,
-    type: 3}
-  muzzlePoint: {fileID: 7112281562962059863}
-  bulletObject: {fileID: 7340708398473589948, guid: 367fb604563bc0f46a9161372fe97cd0,
-    type: 3}
-  _lifeTime:
-    _value: 3
-  rd: {fileID: 1194713309584581121, guid: 367fb604563bc0f46a9161372fe97cd0, type: 3}
-  bulletSpeed: 10
-  attackPoint: 0

@@ -10,9 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 8784817554790727688}
   - component: {fileID: 90067235902259249}
+  - component: {fileID: 2497616109483679890}
   m_Layer: 0
   m_Name: Monster
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -26,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 3486634704476419877}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.33, y: 0, z: 3.03}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -56,6 +57,25 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
+--- !u!114 &2497616109483679890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3486634704476419877}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 439af7ae00a1c3c4dbd903242778a2b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  testDataForEditorOnly: {fileID: 11400000, guid: 9953907e967668e4b9cb7e71f7d508a9,
+    type: 2}
+  faction: 1
+  moveSpeed: 0.4
+  attackRange: 0.6
+  attackDelay: 1
+  laneTolerance: 0.1
 --- !u!1 &3966731012240164031
 GameObject:
   m_ObjectHideFlags: 0
@@ -117,7 +137,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: b1b7aa895484fe6489559091c869211f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
