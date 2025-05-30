@@ -5,7 +5,7 @@ using UnityEngine;
 public class ZombieUnit : Unit
 {
     [SerializeField] private float moveSpeed = 1.5f;
-    [SerializeField] private float attackRange = 1.0f;
+    [SerializeField] private float attackRange = 0.6f;
     [SerializeField] private float attackDelay = 1.5f;
     [SerializeField] private float laneTolerance = 0.1f; // 라인 허용 오차 (Y축)
 
@@ -96,7 +96,7 @@ public class ZombieUnit : Unit
         if (target != null && target.IsAlive())
         {
             target.TakeDamage(GetAttackPower());
-            Debug.Log($"[Zombie] {target.GetUnitName()} 공격함");
+            //Debug.Log($"[Zombie] {target.GetUnitName()} 공격함");
 
             if (!target.IsAlive())
             {

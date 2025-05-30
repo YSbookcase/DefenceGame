@@ -160,6 +160,10 @@ MonoBehaviour:
   bulletSpeed: 5
   fireDelay: 1
   attackPower: 1
+  detectRange: 10
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7827762850163376598
 MonoBehaviour:
   m_ObjectHideFlags: 0
