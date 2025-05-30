@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GridSpawner : MonoBehaviour
 {
-    public int width = 5;
+    public int width = 9;
     public int height = 5;
     public float cellSize = 3f;
     public GameObject tilePrefab;

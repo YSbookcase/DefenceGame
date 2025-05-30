@@ -157,6 +157,13 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7340708398473589948, guid: 367fb604563bc0f46a9161372fe97cd0,
     type: 3}
   muzzlePoint: {fileID: 7112281562962059863}
+  bulletSpeed: 5
+  fireDelay: 1
+  attackPower: 1
+  detectRange: 10
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 128
 --- !u!114 &7827762850163376598
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -169,6 +176,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93931f7a3fa446d44a568a125d44b266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testDataForEditorOnly: {fileID: 11400000, guid: f336e85aa7671cf4c86164de16c439a3,
+    type: 2}
+  faction: 0
 --- !u!1 &4463898682695382591
 GameObject:
   m_ObjectHideFlags: 0

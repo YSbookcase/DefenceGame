@@ -25,22 +25,15 @@ public class UnitPeashooter : Unit
                 weapon.SetWeaponStats(
                     peashooter.attackPower,
                     peashooter.bulletSpeed,
-                    peashooter.attackDelay
+                    peashooter.attackDelay,
+                    peashooter.range
                 );
-                weapon.StartShooting();
+             
             }
 
-            StartCoroutine(AttackRoutine()); // 선택적
+           
         }
     }
 
-    private IEnumerator AttackRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(attackDelay);
-            // 타겟 감지 후 총알 발사 (예: BulletPool에서 꺼내기)
-            Debug.Log("[Peashooter] 공격 실행");
-        }
-    }
+
 }

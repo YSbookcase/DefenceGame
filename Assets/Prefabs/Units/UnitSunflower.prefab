@@ -61,7 +61,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 4973bb4e49214f348915bebaa8e283b8, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -93,7 +93,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4873218203849084378}
   - component: {fileID: 7248173727538918319}
-  - component: {fileID: 7745147282105009654}
   - component: {fileID: 6128066562127624824}
   m_Layer: 0
   m_Name: UnitSunflower
@@ -142,18 +141,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0, y: 1, z: 0}
---- !u!114 &7745147282105009654
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2953164585944645855}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93ceb3c6a510f7247a11dd675a7a91b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6128066562127624824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -166,6 +153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 812411d72459e4646af2436b0730f45b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  testDataForEditorOnly: {fileID: 11400000, guid: 808e5bbe25cced446b447ef1bc1b95eb,
+    type: 2}
+  faction: 0
+  sunEnergyPrefab: {fileID: 7668534678740723190, guid: ad02f6bc5989e634db703f7ebc810a2a,
+    type: 3}
+  sunSpawnPoint: {fileID: 7112281562962059863}
 --- !u!1 &4463898682695382591
 GameObject:
   m_ObjectHideFlags: 0
@@ -176,7 +169,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7112281562962059863}
   m_Layer: 0
-  m_Name: ShootPoint
+  m_Name: SunSpawnPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +184,7 @@ Transform:
   m_GameObject: {fileID: 4463898682695382591}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0.8}
+  m_LocalPosition: {x: 1, y: 2.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

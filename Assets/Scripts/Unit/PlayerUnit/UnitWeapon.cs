@@ -14,6 +14,14 @@ public class UnitWeapon : MonoBehaviour
     [SerializeField] private float fireDelay;
     [SerializeField] private int attackPower;
 
+
+    [Header("타겟 감지")]
+    [SerializeField] private float detectRange = 10f;
+    [SerializeField] private LayerMask targetLayer;
+
+
+
+
     private ObjectPool _bulletPool;
     private Coroutine _shootCoroutine;
 
@@ -24,22 +32,44 @@ public class UnitWeapon : MonoBehaviour
 
     private void Update()
     {
-        StartShooting();
+
+
+        CheckAndShoot();
     }
 
 
 
-    public void StartShooting()
+    private void CheckAndShoot()
     {
-        if (_shootCoroutine == null)
+        if (IsTargetInFront())
         {
-            _shootCoroutine = StartCoroutine(FireLoop());
+            if (_shootCoroutine == null)
+                _shootCoroutine = StartCoroutine(FireLoop());
+        }
+        else
+        {
+            if (_shootCoroutine != null)
+            {
+                StopCoroutine(_shootCoroutine);
+                _shootCoroutine = null;
+            }
         }
     }
+
+    private bool IsTargetInFront()
+    {
+        Ray ray = new Ray(muzzlePoint.position, muzzlePoint.forward);
+        return Physics.Raycast(ray, out RaycastHit hit, detectRange, targetLayer)
+               && hit.collider.CompareTag("Monster");
+    }
+
 
     private IEnumerator FireLoop()
     {
         WaitForSeconds wait = new WaitForSeconds(fireDelay);
+
+        // 첫 번째 발사 전 대기
+        yield return wait;
 
         while (true)
         {
@@ -60,18 +90,20 @@ public class UnitWeapon : MonoBehaviour
     }
 
 
-    public void SetWeaponStats(int attackPower, float bulletSpeed, float fireDelay)
+    public void SetWeaponStats(int attackPower, float bulletSpeed, float fireDelay, float range)
     {
         this.attackPower = attackPower;
         this.bulletSpeed = bulletSpeed;
         this.fireDelay = fireDelay;
+        this.detectRange = range;
 
-        // 기존 FireLoop Coroutine 재시작
         if (_shootCoroutine != null)
             StopCoroutine(_shootCoroutine);
 
         _shootCoroutine = StartCoroutine(FireLoop());
     }
+
+
     private void ReturnBullet(PooledObject bullet)
     {
         _bulletPool.PushPool(bullet);

@@ -1,29 +1,23 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class UnitSpawner : MonoBehaviour
+public class UnitCardSpawner : MonoBehaviour
 {
-    [SerializeField] private UnitData[] unitDatas;
+    [SerializeField] private List<Transform> cardSlots; // 슬롯 위치 (빈 슬롯 오브젝트)
+    [SerializeField] private GameObject cardPrefab;     // UnitCardUI 프리팹
+    [SerializeField] private List<UnitData> unitDataList;
 
-    public void SpawnUnit(int index, Vector3 position)
+    private void Start()
     {
-        UnitData data = unitDatas[index];
-        GameObject go = Instantiate(data.unitPrefab, position, Quaternion.identity);
-        // Unit을 가져와서 다운캐스팅
-        Unit unit = go.GetComponent<Unit>();
-
-        if (unit is UnitPeashooter peashooterUnit)
+        for (int i = 0; i < cardSlots.Count && i < unitDataList.Count; i++)
         {
-            peashooterUnit.Init(data); // 오버라이드된 Init() 호출됨
+            GameObject card = Instantiate(cardPrefab, cardSlots[i]);
+            card.transform.localPosition = Vector3.zero;
+            card.transform.localRotation = Quaternion.identity;
+            card.transform.localScale = Vector3.one;
+
+            UnitCardUI ui = card.GetComponent<UnitCardUI>();
+            ui.Setup(unitDataList[i]);
         }
-        else
-        {
-            unit.Init(data); // 기본 Unit이면 기존 Init 호출
-        }
-
-
-
-
     }
 }

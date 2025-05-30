@@ -42,6 +42,10 @@ public class Bullet : PooledObject
 
     private void OnTriggerEnter(Collider other)
     {
+        // 플레이어 유닛은 무시
+        if (other.CompareTag("PlayerUnit"))
+            return;
+
         var damagable = other.GetComponent<IDamagable>();
         if (damagable != null)
         {
