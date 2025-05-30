@@ -24,6 +24,11 @@ public class UnitSunflower : Unit
 
             Vector3 spawnPos = sunSpawnPoint.position;
 
+            // 디버그: 유닛 위치와 SpawnPoint 위치 시각화
+            //Debug.DrawLine(transform.position, spawnPos, Color.red, 5f);
+            //Debug.Log($"[Sunflower] Unit Pos: {transform.position}, SunSpawnPoint Pos: {spawnPos}");
+
+
             GameObject sun = Instantiate(sunEnergyPrefab, spawnPos, Quaternion.identity);
 
             var sr = sun.GetComponent<SpriteRenderer>();
@@ -35,9 +40,6 @@ public class UnitSunflower : Unit
 
             sun.transform.forward = Camera.main.transform.forward;
 
-            var pos = sun.transform.position;
-            pos.z = -0.1f;
-            sun.transform.position = pos;
 
             var energy = sun.GetComponent<SunEnergy>();
             if (energy != null)

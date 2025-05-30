@@ -45,6 +45,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d18774f2af57449bf2242a3d2cfac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flyImagePrefab: {fileID: 6271349239036049371, guid: d778f34f5f1f04d429975fb6f3892974,
+    type: 3}
+  targetUI: {fileID: 0}
+  value: 25
+  fallSpeed: 1.5
+  stopY: 1.5
+  lifeTime: 6
+  sideDriftRange: 1
 --- !u!114 &440601075067634532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,6 +220,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4865149461436336305}
   - component: {fileID: 1617728285305854638}
+  - component: {fileID: 4525540774450820993}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -246,5 +255,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 873ec3aa65823ff4a9e78c611900a73f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4525540774450820993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696267124166075262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcb5fd08abee6fb4db2708dc2e22ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

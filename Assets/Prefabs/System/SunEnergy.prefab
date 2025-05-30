@@ -119,7 +119,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34d18774f2af57449bf2242a3d2cfac5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  flyImagePrefab: {fileID: 6271349239036049371, guid: d778f34f5f1f04d429975fb6f3892974,
+    type: 3}
+  targetUI: {fileID: 0}
   value: 25
   fallSpeed: 1.5
   stopY: 1.5
   lifeTime: 6
+  sideDriftRange: 1

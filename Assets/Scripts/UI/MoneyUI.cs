@@ -18,14 +18,7 @@ public class MoneyUI : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.M))
-        {
-            Debug.Log("M 키 눌림 - 돈 25 추가");
-            GameManager.Instance.Player.AddMoney(25);
-        }
-    }
+
 
     private void UpdateUI(int money)
     {

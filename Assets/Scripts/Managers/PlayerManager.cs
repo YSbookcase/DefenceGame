@@ -7,7 +7,17 @@ public class PlayerManager : MonoBehaviour
 {
     public ObservableProperty<int> Money { get; private set; } = new(0);
 
-    
+
+    private void Update()
+    {
+        
+        if(Input.GetKeyDown(KeyCode.M))
+        {
+            AddMoney(5000);
+        }
+    }
+
+
 
     public void AddMoney(int amount)
     {
