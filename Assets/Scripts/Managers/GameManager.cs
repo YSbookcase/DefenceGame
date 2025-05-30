@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public AudioManager Audio { get; private set; }
+    public PlayerManager Player { get; private set; }
 
     private void Awake() => Init();
 
@@ -13,5 +14,6 @@ public class GameManager : Singleton<GameManager>
     {
         base.SingletonInit();
         Audio = GetComponentInChildren<AudioManager>();
+        Player = GetComponentInChildren<PlayerManager>();
     }
 }

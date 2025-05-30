@@ -1,5 +1,62 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &811556771741875856
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 381905011389529208}
+  - component: {fileID: 6306848777660207323}
+  - component: {fileID: 440601075067634532}
+  m_Layer: 0
+  m_Name: PlayerManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &381905011389529208
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811556771741875856}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4865149461436336305}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6306848777660207323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811556771741875856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 34d18774f2af57449bf2242a3d2cfac5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &440601075067634532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 811556771741875856}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1fcd509a0d17b542b361da51259b220, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5055595590491779195
 GameObject:
   m_ObjectHideFlags: 0
@@ -45,7 +102,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58882980472f0bd46a0f9f27514374f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bgmList: []
+  _bgmList:
+  - {fileID: 8300000, guid: 044360ad1774c4949b9a2f1b89982b80, type: 3}
   _sfxPrefab: {fileID: 2908869427475630976, guid: fc0af0474ad76c04590f973ae8cbb947,
     type: 3}
 --- !u!82 &6147031409565118069
@@ -175,6 +233,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 9190415520516388183}
+  - {fileID: 381905011389529208}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1617728285305854638
