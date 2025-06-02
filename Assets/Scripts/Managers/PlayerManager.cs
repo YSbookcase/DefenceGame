@@ -17,6 +17,16 @@ public class PlayerManager : Singleton<PlayerManager>
         }
     }
 
+    private void OnDestroy()
+    {
+        Debug.LogWarning("PlayerManager가 Destroy 되었습니다!");
+    }
+
+    private void OnDisable()
+    {
+        Debug.LogWarning("PlayerManager가 비활성화되었습니다!");
+    }
+
 
 
     public void AddMoney(int amount)
