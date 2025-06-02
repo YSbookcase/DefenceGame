@@ -9,7 +9,7 @@ public class Unit : PooledObject, IDamagable
 
     [SerializeField] private UnitData testDataForEditorOnly;
     private bool _isInitialized = false;
-
+    public Tile currentTile { get; set; }
 
 
 
@@ -60,7 +60,31 @@ public class Unit : PooledObject, IDamagable
     protected virtual void Die()
     {
         Debug.Log($"[Unit] 사망: {gameObject.name}");
-        gameObject.SetActive(false);
+
+        // 공격 대상에서 빠져야 함
+        //UnitManager.Instance?.RemoveUnit(this);
+
+        // 타일 비우기
+        if (currentTile != null)
+        {
+            currentTile.isOccupied = false;
+            currentTile = null;
+        }
+
+
+
+        // 콜라이더 꺼서 더 이상 물리 반응 없게
+        foreach (var col in GetComponentsInChildren<Collider>())
+            col.enabled = false;
+
+        // 필요 시 이펙트나 사운드
+        // PlayDeathEffect();
+
+        // 일정 시간 뒤 오브젝트 제거 또는 풀로 반환
+        Destroy(gameObject, 1.5f);
+
+        // 또는 풀링 시스템 쓸 경우엔 그냥 아래 처리
+        // gameObject.SetActive(false);
     }
 
     public string GetUnitName()
