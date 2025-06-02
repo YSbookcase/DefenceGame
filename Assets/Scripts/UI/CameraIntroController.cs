@@ -4,7 +4,7 @@ using UnityEngine;
 public class CameraIntroController : MonoBehaviour
 {
     [SerializeField] private Transform endPosition;            // (25,8,0)
-    [SerializeField] private Vector3 gameplayPosition = new(12f, 8f, 0f);
+    [SerializeField] private Vector3 gameplayPosition = new(12f, 9.5f, 0f);
     [SerializeField] private float mapIntroDuration = 3f;
     [SerializeField] private float gameStartDuration = 1.5f; // ← 더 빠르게
     [SerializeField] private GameObject unitCardPanel;
@@ -14,7 +14,7 @@ public class CameraIntroController : MonoBehaviour
 
     private void Start()
     {
-        transform.position = new Vector3(5f, 8f, 0f);
+        transform.position = new Vector3(5f, 9.5f, 0f);
         unitCardPanel.SetActive(false);
 
         StartCoroutine(MoveTo(endPosition.position, mapIntroDuration, () =>
