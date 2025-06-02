@@ -60,7 +60,12 @@ public class SunEnergy : MonoBehaviour
         }
     }
 
-   private void OnMouseDown()
+    public void SetValue(int amount)
+    {
+        value = amount;
+    }
+
+    private void OnMouseDown()
    {   
    
        // 화면 좌표 계산
@@ -75,6 +80,8 @@ public class SunEnergy : MonoBehaviour
        GameManager.Instance.Player.AddMoney(value);
        Destroy(gameObject);
    }
+
+
     //
     //private IEnumerator FlyToUI(RectTransform fly, RectTransform target)
     //{
@@ -114,8 +121,5 @@ public class SunEnergy : MonoBehaviour
     //    Destroy(fly.gameObject);
     //}
 
-    public void SetValue(int amount)
-    {
-        value = amount;
-    }
+
 }

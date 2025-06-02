@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DesignPattern;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : Singleton<PlayerManager>
 {
     public ObservableProperty<int> Money { get; private set; } = new(0);
 

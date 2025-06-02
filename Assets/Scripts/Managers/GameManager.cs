@@ -27,9 +27,5 @@ public class GameManager : Singleton<GameManager>
         if (Tile == null) Debug.LogError("TileManager is missing");
         if (Tile == null) Debug.LogError("UnitPlacerr is missing");
 
-        // 명시적으로 PlayerManager 유지
-        if (Player != null)
-            DontDestroyOnLoad(Player.gameObject);
-
     }
 }
