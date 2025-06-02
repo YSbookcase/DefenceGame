@@ -38,6 +38,8 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        _bgmSource.volume = 0.5f; // 초기 볼륨 설정
+
         _sfxPool = new ObjectPool(transform, _sfxPrefab, 10);
     }
 

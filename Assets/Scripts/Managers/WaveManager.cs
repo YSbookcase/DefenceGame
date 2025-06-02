@@ -18,10 +18,10 @@ public class WaveManager : Singleton<WaveManager>
 
     private void Start()
     {
-        if (SceneManager.GetActiveScene().name == "MainGame") // 메인 게임 씬 이름으로 교체
-        {
-            StartWaves(); // 또는 WaveManager.Instance.StartWaves();
-        }
+        //if (SceneManager.GetActiveScene().name == "MainGame") // 메인 게임 씬 이름으로 교체
+        //{
+        //    StartWaves(); // 또는 WaveManager.Instance.StartWaves();
+        //}
     }
 
     public void StartWaves()

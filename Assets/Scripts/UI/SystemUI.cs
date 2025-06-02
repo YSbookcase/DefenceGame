@@ -115,5 +115,9 @@ public class SystemUI : MonoBehaviour
         GameManager.Instance.Audio.SetBgmVolume(value);
     }
 
- 
+    public void OnStartGameButton()
+    {
+        WaveManager.Instance.StartWaves();
+    }
+
 }

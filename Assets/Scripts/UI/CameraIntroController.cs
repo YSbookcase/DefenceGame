@@ -18,7 +18,7 @@ public class CameraIntroController : MonoBehaviour
         transform.position = new Vector3(5f, 9.5f, 0f);
         unitCardPanel.SetActive(false);
 
-        StartCoroutine(BeginIntroAfterDelay(1.5f)); // 원하는 대기 시간 설정
+        StartCoroutine(BeginIntroAfterDelay(startDelay)); // 원하는 대기 시간 설정
     }
 
     public void OnClickPlayButton()
