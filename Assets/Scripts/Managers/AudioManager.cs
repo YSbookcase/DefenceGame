@@ -38,6 +38,8 @@ public class AudioManager : MonoBehaviour
             return;
         }
 
+        _bgmSource.volume = 0.5f; // 초기 볼륨 설정
+
         _sfxPool = new ObjectPool(transform, _sfxPrefab, 10);
     }
 
@@ -65,6 +67,18 @@ public class AudioManager : MonoBehaviour
             PlayCurrentBgm();
         }
     }
+
+    public float GetBgmVolume()
+    {
+        return _bgmSource != null ? _bgmSource.volume : 0f;
+    }
+
+    public void SetBgmVolume(float volume)
+    {
+        if (_bgmSource != null)
+            _bgmSource.volume = Mathf.Clamp01(volume);
+    }
+
 
     public SFXController GetSFX()
     {

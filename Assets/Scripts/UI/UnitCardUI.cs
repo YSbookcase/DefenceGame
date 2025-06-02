@@ -94,6 +94,13 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                         Vector3 spawnPos = tile.transform.position;
                         GameObject unit = Instantiate(unitData.unitPrefab, spawnPos, Quaternion.Euler(0, 90, 0));
                         unit.name = unitData.unitName;
+
+                        Unit unitScript = unit.GetComponent<Unit>();
+                        if (unitScript != null)
+                        {
+                            unitScript.currentTile = tile;
+                        }
+
                     }
                     else
                     {

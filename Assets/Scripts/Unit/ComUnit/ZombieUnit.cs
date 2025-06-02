@@ -54,10 +54,10 @@ public class ZombieUnit : Unit
             if (unit == this || unit.faction == this.faction || !unit.IsAlive())
                 continue;
 
-            float yDiff = Mathf.Abs(transform.position.y - unit.transform.position.y);
+            float zDiff = Mathf.Abs(transform.position.z - unit.transform.position.z);
             float xDiff = transform.position.x - unit.transform.position.x;
 
-            if (yDiff <= laneTolerance && xDiff >= 0f && xDiff <= attackRange)
+            if (zDiff <= laneTolerance && xDiff >= 0f && xDiff <= attackRange)
             {
                 target = unit;
                 break;

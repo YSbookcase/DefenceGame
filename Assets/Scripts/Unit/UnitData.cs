@@ -15,5 +15,6 @@ public abstract class UnitData : ScriptableObject
     public float range =0.3f;
     public int cost = 25;
     public GameObject unitPrefab;
+    public float coolTime = 0f;
 
 }

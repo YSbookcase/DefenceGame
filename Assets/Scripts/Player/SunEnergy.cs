@@ -60,62 +60,19 @@ public class SunEnergy : MonoBehaviour
         }
     }
 
-   private void OnMouseDown()
-   {   
-   
-       // 화면 좌표 계산
-       //Vector3 start = Camera.main.WorldToScreenPoint(transform.position);
-       //GameObject image = Instantiate(flyImagePrefab, transform.parent); // Canvas 아래에 생성
-       //image.transform.SetParent(GameObject.Find("UIMainGame").transform, false); // Canvas 이름 확인
-       //image.transform.position = start;
-   
-       // 이동 연출
-       //StartCoroutine(FlyToUI(image.GetComponent<RectTransform>(), targetUI));
-   
-       GameManager.Instance.Player.AddMoney(value);
-       Destroy(gameObject);
-   }
-    //
-    //private IEnumerator FlyToUI(RectTransform fly, RectTransform target)
-    //{
-    //    float duration = 0.5f;
-    //    float elapsed = 0f;
-    //
-    //    RectTransform parentRect = fly.parent.GetComponent<RectTransform>();
-    //
-    //    // 출발 위치
-    //    Vector2 screenStart = Camera.main.WorldToScreenPoint(transform.position);
-    //    Vector2 startAnchoredPos;
-    //    if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, screenStart, Camera.main, out startAnchoredPos))
-    //    {
-    //        Debug.LogError("Start 변환 실패");
-    //        yield break;
-    //    }
-    //
-    //    // 도착 위치 (targetUI.position은 월드 위치이므로 ScreenPoint로 변환 필요)
-    //    Vector2 screenEnd = Camera.main.WorldToScreenPoint(target.position);
-    //    Vector2 endAnchoredPos;
-    //    if (!RectTransformUtility.ScreenPointToLocalPointInRectangle(parentRect, screenEnd, Camera.main, out endAnchoredPos))
-    //    {
-    //        Debug.LogError("End 변환 실패");
-    //        yield break;
-    //    }
-    //
-    //    fly.anchoredPosition = startAnchoredPos;
-    //
-    //    while (elapsed < duration)
-    //    {
-    //        elapsed += Time.deltaTime;
-    //        float t = Mathf.Clamp01(elapsed / duration);
-    //        fly.anchoredPosition = Vector2.Lerp(startAnchoredPos, endAnchoredPos, t);
-    //        yield return null;
-    //    }
-    //
-    //    Destroy(fly.gameObject);
-    //}
-
     public void SetValue(int amount)
     {
         value = amount;
     }
+
+    private void OnMouseDown()
+   {   
+
+       GameManager.Instance.Player.AddMoney(value);
+       Destroy(gameObject);
+   }
+
+
+
+
 }

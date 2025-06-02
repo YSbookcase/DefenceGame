@@ -11,6 +11,8 @@ public class UnitCardSpawner : MonoBehaviour
     {
         for (int i = 0; i < cardSlots.Count && i < unitDataList.Count; i++)
         {
+
+
             GameObject card = Instantiate(cardPrefab, cardSlots[i]);
             card.transform.localPosition = Vector3.zero;
             card.transform.localRotation = Quaternion.identity;

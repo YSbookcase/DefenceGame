@@ -9,8 +9,8 @@ public class CameraSetting : MonoBehaviour
         {
             Camera.main.transparencySortMode = TransparencySortMode.CustomAxis;
             Camera.main.transparencySortAxis = new Vector3(0, 1, 0); // Y축 정렬 기준
-            Debug.Log("SortMode: " + Camera.main.transparencySortMode);
-            Debug.Log("SortAxis: " + Camera.main.transparencySortAxis);
+            //Debug.Log("SortMode: " + Camera.main.transparencySortMode);
+            //Debug.Log("SortAxis: " + Camera.main.transparencySortAxis);
         }
     }
 }

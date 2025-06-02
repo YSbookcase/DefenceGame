@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DesignPattern;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -27,9 +28,23 @@ public class GameManager : Singleton<GameManager>
         if (Tile == null) Debug.LogError("TileManager is missing");
         if (Tile == null) Debug.LogError("UnitPlacerr is missing");
 
-        // 명시적으로 PlayerManager 유지
-        if (Player != null)
-            DontDestroyOnLoad(Player.gameObject);
-
     }
+
+
+    // 씬 전환
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    // 게임 종료
+    public void ExitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false; // 에디터에서 종료
+#else
+        Application.Quit(); // 빌드 환경에서 종료
+#endif
+    }
+
 }
