@@ -32,7 +32,7 @@ public class GameManager : Singleton<GameManager>
 
 
     // ¾À ÀüÈ¯
-    public void LoadNextStage(string sceneName)
+    public void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }

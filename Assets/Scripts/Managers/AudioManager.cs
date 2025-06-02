@@ -66,6 +66,18 @@ public class AudioManager : MonoBehaviour
         }
     }
 
+    public float GetBgmVolume()
+    {
+        return _bgmSource != null ? _bgmSource.volume : 0f;
+    }
+
+    public void SetBgmVolume(float volume)
+    {
+        if (_bgmSource != null)
+            _bgmSource.volume = Mathf.Clamp01(volume);
+    }
+
+
     public SFXController GetSFX()
     {
         // 풀에서 꺼내와서 반환

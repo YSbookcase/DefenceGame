@@ -8,6 +8,7 @@ TagManager:
   - Monster
   - Sun
   - Tile
+  - Menu
   layers:
   - Default
   - TransparentFX

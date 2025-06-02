@@ -263,6 +263,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 39282060}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &66673261
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 66673263}
+  - component: {fileID: 66673262}
+  m_Layer: 0
+  m_Name: SystemUI
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &66673262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66673261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c29d2912c2a417740add53c064f8740b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  menuPanel: {fileID: 1664637051}
+  volumeSlider: {fileID: 513151105}
+--- !u!4 &66673263
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 66673261}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 12.045145, y: -4.8098536, z: 11.70939}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &77753966
 GameObject:
   m_ObjectHideFlags: 0
@@ -591,6 +637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   endPosition: {fileID: 951725326}
   gameplayPosition: {x: 12, y: 9.5, z: 0}
+  startDelay: 2
   mapIntroDuration: 3
   gameStartDuration: 1.5
   unitCardPanel: {fileID: 2012125380}
@@ -782,7 +829,7 @@ GameObject:
   - component: {fileID: 216094863}
   - component: {fileID: 216094862}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: MainTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -851,7 +898,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 216094863}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 66673262}
+        m_TargetAssemblyTypeName: SystemUI, Assembly-CSharp
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: MainTitle
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &216094863
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2060,6 +2119,12 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!224 &669001205 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2796381242201981696, guid: 5194159d59c09e34f9f783ff07923b04,
+    type: 3}
+  m_PrefabInstance: {fileID: 3526097943106063052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &739451642
 GameObject:
   m_ObjectHideFlags: 0
@@ -2175,7 +2240,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 804611376}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 66673262}
+        m_TargetAssemblyTypeName: SystemUI, Assembly-CSharp
+        m_MethodName: ToggleMenu
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &804611376
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2263,6 +2340,12 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!224 &860695501 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 9183673619136438011, guid: 5194159d59c09e34f9f783ff07923b04,
+    type: 3}
+  m_PrefabInstance: {fileID: 3526097943106063052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &870584473
 GameObject:
   m_ObjectHideFlags: 0
@@ -4356,6 +4439,12 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1595098372}
   m_CullTransparentMesh: 1
+--- !u!224 &1615129779 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6812892882382224764, guid: 5194159d59c09e34f9f783ff07923b04,
+    type: 3}
+  m_PrefabInstance: {fileID: 3526097943106063052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1664637051
 GameObject:
   m_ObjectHideFlags: 0
@@ -4369,7 +4458,7 @@ GameObject:
   - component: {fileID: 1664637053}
   m_Layer: 5
   m_Name: Menu
-  m_TagString: Untagged
+  m_TagString: Menu
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4926,6 +5015,12 @@ CanvasRenderer:
 --- !u!224 &1804039701 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7631985997339395436, guid: 5194159d59c09e34f9f783ff07923b04,
+    type: 3}
+  m_PrefabInstance: {fileID: 3526097943106063052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &1810659910 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6093147618472186395, guid: 5194159d59c09e34f9f783ff07923b04,
     type: 3}
   m_PrefabInstance: {fileID: 3526097943106063052}
   m_PrefabAsset: {fileID: 0}
@@ -5723,7 +5818,7 @@ GameObject:
   - component: {fileID: 2089677421}
   - component: {fileID: 2089677420}
   m_Layer: 5
-  m_Name: Text (TMP)
+  m_Name: MainTitleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5768,9 +5863,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Main Menu
-
-'
+  m_text: Main Title
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6379,6 +6472,41 @@ PrefabInstance:
       propertyPath: m_margin.z
       value: -4.317333
       objectReference: {fileID: 0}
+    - target: {fileID: 6805787141540630831, guid: 5194159d59c09e34f9f783ff07923b04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805787141540630831, guid: 5194159d59c09e34f9f783ff07923b04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805787141540630831, guid: 5194159d59c09e34f9f783ff07923b04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 66673262}
+    - target: {fileID: 6805787141540630831, guid: 5194159d59c09e34f9f783ff07923b04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805787141540630831, guid: 5194159d59c09e34f9f783ff07923b04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805787141540630831, guid: 5194159d59c09e34f9f783ff07923b04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: SystemUI, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6805787141540630831, guid: 5194159d59c09e34f9f783ff07923b04,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7325457809841936948, guid: 5194159d59c09e34f9f783ff07923b04,
         type: 3}
       propertyPath: m_Color.b
@@ -6802,6 +6930,26 @@ PrefabInstance:
       propertyPath: cardSlots.Array.data[1]
       value: 
       objectReference: {fileID: 1422815259}
+    - target: {fileID: 7235370388501730786, guid: 03c838ba5bee8ab44b515c82f6df3d90,
+        type: 3}
+      propertyPath: cardSlots.Array.data[2]
+      value: 
+      objectReference: {fileID: 1810659910}
+    - target: {fileID: 7235370388501730786, guid: 03c838ba5bee8ab44b515c82f6df3d90,
+        type: 3}
+      propertyPath: cardSlots.Array.data[3]
+      value: 
+      objectReference: {fileID: 1615129779}
+    - target: {fileID: 7235370388501730786, guid: 03c838ba5bee8ab44b515c82f6df3d90,
+        type: 3}
+      propertyPath: cardSlots.Array.data[4]
+      value: 
+      objectReference: {fileID: 669001205}
+    - target: {fileID: 7235370388501730786, guid: 03c838ba5bee8ab44b515c82f6df3d90,
+        type: 3}
+      propertyPath: cardSlots.Array.data[5]
+      value: 
+      objectReference: {fileID: 860695501}
     - target: {fileID: 8696267124166075262, guid: 03c838ba5bee8ab44b515c82f6df3d90,
         type: 3}
       propertyPath: m_Name
@@ -6827,3 +6975,4 @@ SceneRoots:
   - {fileID: 1735771986}
   - {fileID: 739451643}
   - {fileID: 1208017213}
+  - {fileID: 66673263}

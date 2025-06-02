@@ -60,6 +60,10 @@ MonoBehaviour:
   cardSlots:
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   cardPrefab: {fileID: 7316983757434110800, guid: c86cab62d9b98ce4a80b01b6562e344f,
     type: 3}
   unitDataList:
