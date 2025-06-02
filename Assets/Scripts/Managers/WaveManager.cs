@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DesignPattern;
+using UnityEngine.SceneManagement;
 
 public class WaveManager : Singleton<WaveManager>
 {
@@ -17,7 +18,10 @@ public class WaveManager : Singleton<WaveManager>
 
     private void Start()
     {
-        StartWaves();
+        if (SceneManager.GetActiveScene().name == "MainGame") // 메인 게임 씬 이름으로 교체
+        {
+            StartWaves(); // 또는 WaveManager.Instance.StartWaves();
+        }
     }
 
     public void StartWaves()

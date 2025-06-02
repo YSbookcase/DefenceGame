@@ -5,6 +5,7 @@ public class CameraIntroController : MonoBehaviour
 {
     [SerializeField] private Transform endPosition;            // (25,8,0)
     [SerializeField] private Vector3 gameplayPosition = new(12f, 9.5f, 0f);
+    [SerializeField] private float startDelay = 2f;
     [SerializeField] private float mapIntroDuration = 3f;
     [SerializeField] private float gameStartDuration = 1.5f; // ← 더 빠르게
     [SerializeField] private GameObject unitCardPanel;
@@ -17,10 +18,7 @@ public class CameraIntroController : MonoBehaviour
         transform.position = new Vector3(5f, 9.5f, 0f);
         unitCardPanel.SetActive(false);
 
-        StartCoroutine(MoveTo(endPosition.position, mapIntroDuration, () =>
-        {
-            unitCardPanel.SetActive(true);
-        }));
+        StartCoroutine(BeginIntroAfterDelay(1.5f)); // 원하는 대기 시간 설정
     }
 
     public void OnClickPlayButton()
@@ -31,6 +29,17 @@ public class CameraIntroController : MonoBehaviour
             unitCardPanel.SetActive(false);
             StartCoroutine(MoveTo(gameplayPosition, gameStartDuration, null));
         }
+    }
+
+
+    private IEnumerator BeginIntroAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+
+        yield return MoveTo(endPosition.position, mapIntroDuration, () =>
+        {
+            unitCardPanel.SetActive(true);
+        });
     }
 
 
