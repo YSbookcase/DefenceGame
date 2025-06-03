@@ -12,17 +12,17 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Transform originalParent;
     private GameObject previewObject;
 
+
+    private void Update()
+    {
+        UpdateVisual();
+    }
     public void Setup(UnitData data)
     {
         unitData = data;
         if (data.Icon != null)
             rawImage.texture = data.Icon.texture;
 
-        UpdateVisual();
-    }
-
-    private void Update()
-    {
         UpdateVisual();
     }
 
@@ -34,6 +34,7 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         // 배치 가능한 유닛 프리뷰 생성
         UnitPlacer.Instance.StartPlacing(unitData);
     }
+
 
 
     private void UpdateVisual()
