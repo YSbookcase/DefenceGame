@@ -2179,21 +2179,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1176943002147196061, guid: 03c838ba5bee8ab44b515c82f6df3d90,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176943002147196061, guid: 03c838ba5bee8ab44b515c82f6df3d90,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1176943002147196061, guid: 03c838ba5bee8ab44b515c82f6df3d90,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 4865149461436336305, guid: 03c838ba5bee8ab44b515c82f6df3d90,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2279,44 +2264,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: GameManger
       objectReference: {fileID: 0}
-    - target: {fileID: 8922111689678033347, guid: 03c838ba5bee8ab44b515c82f6df3d90,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8696267124166075262, guid: 03c838ba5bee8ab44b515c82f6df3d90,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 8902471990834460891}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 03c838ba5bee8ab44b515c82f6df3d90, type: 3}
---- !u!1 &8902471990834460890 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8696267124166075262, guid: 03c838ba5bee8ab44b515c82f6df3d90,
+--- !u!114 &8902471990834460891 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5270110275794339429, guid: 03c838ba5bee8ab44b515c82f6df3d90,
     type: 3}
   m_PrefabInstance: {fileID: 8902471990834460889}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &8902471990834460891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8902471990834460890}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 061c0e8872b7e85408dfba8e20498f85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunEnergyPrefab: {fileID: 7668534678740723190, guid: ad02f6bc5989e634db703f7ebc810a2a,
-    type: 3}
-  spawnInterval: 4
-  spawnY: 8
-  minX: -1
-  maxX: 25
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

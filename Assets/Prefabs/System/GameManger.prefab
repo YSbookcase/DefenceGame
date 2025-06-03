@@ -206,8 +206,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58882980472f0bd46a0f9f27514374f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bgmList:
-  - {fileID: 8300000, guid: 044360ad1774c4949b9a2f1b89982b80, type: 3}
+  sceneBgmDataList:
+  - {fileID: 11400000, guid: f80a032bd2836cd43ae5e2d18629d835, type: 2}
+  - {fileID: 11400000, guid: 568630564ea097c438fb247bda2fe690, type: 2}
   _sfxPrefab: {fileID: 2908869427475630976, guid: fc0af0474ad76c04590f973ae8cbb947,
     type: 3}
 --- !u!82 &6147031409565118069
@@ -333,7 +334,7 @@ Transform:
   m_GameObject: {fileID: 8099405650086495296}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8.170521, y: 1.0286083, z: 0.8254831}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -385,6 +386,7 @@ GameObject:
   - component: {fileID: 4865149461436336305}
   - component: {fileID: 1617728285305854638}
   - component: {fileID: 4525540774450820993}
+  - component: {fileID: 5270110275794339429}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -437,6 +439,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb5fd08abee6fb4db2708dc2e22ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5270110275794339429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8696267124166075262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061c0e8872b7e85408dfba8e20498f85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sunEnergyPrefab: {fileID: 7668534678740723190, guid: ad02f6bc5989e634db703f7ebc810a2a,
+    type: 3}
+  spawnInterval: 4
+  spawnY: 8
+  minX: -1
+  maxX: 25
 --- !u!1 &8922111689678033347
 GameObject:
   m_ObjectHideFlags: 0

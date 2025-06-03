@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d201da3103782d4ba8881bac567e26a, type: 3}
-  m_Name: TitleSceneBgmData
+  m_Name: MainGameReadySceneBgmData 1
   m_EditorClassIdentifier: 
-  sceneName: MainGame
+  sceneName: MainTitle
   bgmList:
-  - {fileID: 8300000, guid: b5c815bdd760be843af03f6bdec8ae73, type: 3}
+  - {fileID: 8300000, guid: 01fffe99593abcb4c8981ab0b4fe5ae0, type: 3}

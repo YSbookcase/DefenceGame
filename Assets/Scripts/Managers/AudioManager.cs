@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using DesignPattern;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : Singleton<AudioManager>
 {
     private AudioSource _bgmSource;
     private ObjectPool _sfxPool;
-    
 
-    [SerializeField] private List<AudioClip> _bgmList = new();
+    [SerializeField] private List<SceneBgmData> sceneBgmDataList;
+
+    private List<AudioClip> _currentBgmList = new();
     [SerializeField] private SFXController _sfxPrefab;
 
     private int _currentBgmIndex = 0;
@@ -17,12 +19,20 @@ public class AudioManager : MonoBehaviour
     private void Awake() => Init();
 
 
-    private void Start() => PlayCurrentBgm();
+    private void Start()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+
+        string currentScene = SceneManager.GetActiveScene().name;
+        SetBgmListForScene(currentScene);
+        PlayCurrentBgm();
+    }
+
 
     private void Update()
     {
         // 현재 BGM이 끝났으면 다음 트랙으로
-        if (!_bgmSource.isPlaying)
+        if (!_bgmSource.isPlaying && _currentBgmList.Count > 0)
         {
             NextBgm();
         }
@@ -43,24 +53,47 @@ public class AudioManager : MonoBehaviour
         _sfxPool = new ObjectPool(transform, _sfxPrefab, 10);
     }
 
+    //  씬 로드시 BGM 리스트 갱신
+    private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        SetBgmListForScene(scene.name);
+        PlayCurrentBgm();
+    }
+
+    //  Scene 이름 기반으로 BGM 리스트 설정
+    private void SetBgmListForScene(string sceneName)
+    {
+        SceneBgmData data = sceneBgmDataList.Find(d => d.sceneName == sceneName);
+        if (data != null)
+        {
+            _currentBgmList = data.bgmList;
+            _currentBgmIndex = 0;
+        }
+        else
+        {
+            _currentBgmList.Clear();
+            Debug.LogWarning($"[AudioManager] {sceneName}에 해당하는 BGM 리스트가 없습니다.");
+        }
+    }
 
     private void PlayCurrentBgm()
     {
-        if (_bgmList.Count == 0) return;
+        if (_currentBgmList.Count == 0) return;
 
-        _bgmSource.clip = _bgmList[_currentBgmIndex];
+        _bgmSource.clip = _currentBgmList[_currentBgmIndex];
         _bgmSource.Play();
     }
 
     private void NextBgm()
     {
-        _currentBgmIndex = (_currentBgmIndex + 1) % _bgmList.Count;
+        _currentBgmIndex = (_currentBgmIndex + 1) % _currentBgmList.Count;
         PlayCurrentBgm();
     }
 
+    //  씬에서 직접 인덱스로 BGM 재생 가능
     public void BgmPlay(int index)
     {
-        if (0 <= index && index < _bgmList.Count)
+        if (0 <= index && index < _currentBgmList.Count)
         {
             _bgmSource.Stop();
             _currentBgmIndex = index;
