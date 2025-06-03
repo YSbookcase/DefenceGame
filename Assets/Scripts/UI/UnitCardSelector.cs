@@ -8,6 +8,7 @@ public class UnitCardSelector : MonoBehaviour, IPointerClickHandler
     private UnitData unitData;
     private UnitCardSelectionManager manager;
 
+    private bool isSelected = false;
     public void Setup(UnitData data, UnitCardSelectionManager mgr)
     {
         unitData = data;
@@ -27,4 +28,15 @@ public class UnitCardSelector : MonoBehaviour, IPointerClickHandler
         else
             manager.TrySelectCard(this);
     }
+
+    public void SetSelected(bool selected)
+    {
+        isSelected = selected;
+
+        // 예: 어두운 색상으로 표시
+        iconImage.color = selected ? new Color(0.5f, 0.5f, 0.5f, 1f) : Color.white;
+    }
+
+
+
 }

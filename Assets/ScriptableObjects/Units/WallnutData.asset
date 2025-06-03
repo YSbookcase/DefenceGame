@@ -12,12 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fccbffa4b6db204f8e4a8867baeb961, type: 3}
   m_Name: WallnutData
   m_EditorClassIdentifier: 
-  unitName: 
-  Description: 
-  Icon: {fileID: 0}
-  maxHp: 0
+  unitName: WallnutData
+  Description: "\uACF5\uACA9\uC740 \uD560 \uC218 \uC5C6\uC73C\uB098 \uCCB4\uB825\uC774
+    \uB118\uCE58\uB294 \uC720\uB2DB"
+  Icon: {fileID: 21300000, guid: d8dbae4e12ffbfe4a886f1f02d479907, type: 3}
+  maxHp: 2000
   attackPower: 0
   attackDelay: 0
   range: 0
-  unitPrefab: {fileID: 0}
+  cost: 50
+  unitPrefab: {fileID: 2953164585944645855, guid: 0bb2c1ee5363c9345b9a25f3865ae036,
+    type: 3}
+  coolTime: 0
   defenseMultiplier: 0

@@ -23,7 +23,7 @@ public class SunRainManager : MonoBehaviour
     {
         float x = Random.Range(minX, maxX);
         Vector3 spawnPos = new Vector3(x, spawnY, spawnY);
-        Debug.Log($"[SunRainManager] SunEnergy 积己 困摹: {spawnPos}");
+        //Debug.Log($"[SunRainManager] SunEnergy 积己 困摹: {spawnPos}");
         Quaternion rotation = Quaternion.Euler(45f, 0f, 0f);
         Instantiate(sunEnergyPrefab, spawnPos, rotation);
     }

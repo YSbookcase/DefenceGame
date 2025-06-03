@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DesignPattern;
+using UnityEngine.UI;
 
 public class UnitCardSelectionManager : MonoBehaviour
 {
@@ -12,16 +14,38 @@ public class UnitCardSelectionManager : MonoBehaviour
     [SerializeField] private GameObject selectCardPrefab;
     [SerializeField] private GameObject mainCardPrefab;
 
+    // 카드 목록을 ObservableProperty로 래핑
+    [SerializeField] private ObservableProperty<List<UnitData>> unitDataList = new(new List<UnitData>());
+    public ObservableProperty<List<UnitData>> UnitDataList => unitDataList;
+
     private List<UnitCardSelector> selectedCards = new();
+
+  
+ 
 
     public void Init(List<UnitData> playerCardList)
     {
+        Debug.Log($"[UnitCardSelectionManager] Init 호출됨, 카드 수: {playerCardList.Count}");
+
+        // ObservableProperty에 값 반영
+        unitDataList.Value = playerCardList;
+
         for (int i = 0; i < playerCardList.Count && i < selectSlots.Count; i++)
         {
-            var slot = selectSlots[i];
-            var go = Instantiate(selectCardPrefab, slot);
-            var card = go.GetComponent<UnitCardSelector>();
-            card.Setup(playerCardList[i], this);
+            GameObject card = Instantiate(selectCardPrefab, selectSlots[i]);
+            card.transform.localPosition = Vector3.zero;
+            card.transform.localRotation = Quaternion.identity;
+            card.transform.localScale = Vector3.one;
+
+            var selector = card.GetComponent<UnitCardSelector>();
+
+            if (selector == null)
+            {
+                Debug.LogError($"→ UnitCardSelector가 프리팹에 없음!");
+                continue;
+            }
+
+            selector.Setup(playerCardList[i], this);
         }
     }
 
@@ -37,9 +61,16 @@ public class UnitCardSelectionManager : MonoBehaviour
         if (emptySlot == null)
             return;
 
-        card.transform.SetParent(emptySlot);
+        card.transform.SetParent(emptySlot, false); // ← 반드시 worldPositionStays: false
+        card.transform.localPosition = Vector3.zero;
+        card.transform.localRotation = Quaternion.identity;
+        card.transform.localScale = Vector3.one;
+
         selectedCards.Add(card);
+        card.SetSelected(true);
     }
+
+   
 
     public void TryDeselectCard(UnitCardSelector card)
     {
@@ -47,8 +78,13 @@ public class UnitCardSelectionManager : MonoBehaviour
         if (emptySlot == null)
             return;
 
-        card.transform.SetParent(emptySlot);
+        card.transform.SetParent(emptySlot, false); // UI 좌표계 기준으로 붙이기
+        card.transform.localPosition = Vector3.zero;
+        card.transform.localRotation = Quaternion.identity;
+        card.transform.localScale = Vector3.one;
+
         selectedCards.Remove(card);
+        card.SetSelected(false);
     }
 
     public List<UnitData> GetSelectedUnits()
@@ -60,6 +96,4 @@ public class UnitCardSelectionManager : MonoBehaviour
     {
         return mainSlots.Contains(slot);
     }
-
-
 }

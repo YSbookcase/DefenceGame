@@ -10,7 +10,10 @@ public class SystemUI : MonoBehaviour
 
     [SerializeField] private SunRainManager sunRainManager;
 
+    
     [SerializeField] private UnitCardSelectionManager selectionManager;
+    [SerializeField] private List<UnitData> playerCardList;
+
     [SerializeField] private Transform mainSlotParent;
     [SerializeField] private GameObject unitCardPrefab;
 
@@ -53,6 +56,15 @@ public class SystemUI : MonoBehaviour
         {
             //Debug.LogWarning("SystemUI: menuPanel이 설정되지 않았습니다. 이 씬에는 메뉴가 없을 수 있습니다.");
         }
+
+        // 유닛 카드 선택창에 유닛 카드 배치
+        if (selectionManager != null)
+        {
+            selectionManager.Init(playerCardList); // 내부적으로 unitDataList.Value에 할당됨
+            selectionManager.UnitDataList.Subscribe(OnUnitListChanged);
+        }
+        Debug.Log($"[SystemUI] 초기 카드 수: {playerCardList.Count}");
+
     }
 
     private void Update()
@@ -129,14 +141,35 @@ public class SystemUI : MonoBehaviour
         WaveManager.Instance.StartWaves();
         sunRainManager.StartRain();
 
-        List<UnitData> selectedUnits = selectionManager.GetSelectedUnits();
+        CleanSstMainCardSlots();
 
-        foreach (var data in selectedUnits)
+    }
+    private void CleanSstMainCardSlots()
+    {
+        foreach (Transform slot in mainSlotParent)
         {
-            GameObject go = Instantiate(unitCardPrefab, mainSlotParent);
-            go.GetComponent<UnitCardUI>().Setup(data);
-        }
+            if (slot.childCount == 0) continue;
 
+            GameObject oldCard = slot.GetChild(0).gameObject;
+            UnitData data = oldCard.GetComponent<UnitCardSelector>()?.GetData();
+            if (data == null) continue;
+
+            Destroy(oldCard);
+
+            GameObject newCard = Instantiate(unitCardPrefab, slot);
+            newCard.transform.localPosition = Vector3.zero;
+            newCard.transform.localRotation = Quaternion.identity;
+            newCard.transform.localScale = Vector3.one;
+
+            UnitCardUI ui = newCard.GetComponent<UnitCardUI>();
+            if (ui != null) ui.Setup(data);
+        }
+    }
+
+
+    private void OnUnitListChanged(List<UnitData> newList)
+    {
+        Debug.Log($"[SystemUI] 구독자 알림: 유닛 카드 수 = {newList.Count}");
     }
 
 }

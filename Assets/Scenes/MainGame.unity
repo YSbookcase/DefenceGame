@@ -156,8 +156,12 @@ MonoBehaviour:
   volumeSlider: {fileID: 513151105}
   sunRainManager: {fileID: 8902471990834460891}
   selectionManager: {fileID: 66673264}
+  playerCardList:
+  - {fileID: 11400000, guid: f336e85aa7671cf4c86164de16c439a3, type: 2}
+  - {fileID: 11400000, guid: 808e5bbe25cced446b447ef1bc1b95eb, type: 2}
+  - {fileID: 11400000, guid: d4ec7d45da377c943bc1ad0736e2c06d, type: 2}
   mainSlotParent: {fileID: 3526097943106063055}
-  unitCardPrefab: {fileID: 7316983757434110800, guid: 5369936b0b4598142a2ac10be2b81eb6,
+  unitCardPrefab: {fileID: 7316983757434110800, guid: c86cab62d9b98ce4a80b01b6562e344f,
     type: 3}
 --- !u!4 &66673263
 Transform:
@@ -222,6 +226,11 @@ MonoBehaviour:
     type: 3}
   mainCardPrefab: {fileID: 7316983757434110800, guid: c86cab62d9b98ce4a80b01b6562e344f,
     type: 3}
+  unitDataList:
+    _value:
+    - {fileID: 11400000, guid: f336e85aa7671cf4c86164de16c439a3, type: 2}
+    - {fileID: 11400000, guid: 808e5bbe25cced446b447ef1bc1b95eb, type: 2}
+    - {fileID: 11400000, guid: d4ec7d45da377c943bc1ad0736e2c06d, type: 2}
 --- !u!224 &72085983 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5424235022175913239, guid: 5194159d59c09e34f9f783ff07923b04,
@@ -2498,6 +2507,11 @@ PrefabInstance:
     - target: {fileID: 4865149461436336305, guid: 03c838ba5bee8ab44b515c82f6df3d90,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7235370388501730786, guid: 03c838ba5bee8ab44b515c82f6df3d90,
+        type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7235370388501730786, guid: 03c838ba5bee8ab44b515c82f6df3d90,
