@@ -18,11 +18,12 @@ MonoBehaviour:
     \uADFC\uC811\uD558\uBA74 \uADFC\uC811 \uACF5\uACA9\uC744 \uD558\uBA70 \uB370\uBBF8\uC9C0\uB97C
     \uC785\uD798."
   Icon: {fileID: 0}
-  maxHp: 10
-  attackPower: 1
-  attackDelay: 1
-  range: 0.6
-  money: 0
+  maxHp: 200
+  attackPower: 100
+  attackDelay: 0.8
+  range: 0.3
+  cost: 25
   unitPrefab: {fileID: 3486634704476419877, guid: 0c3bf0374963c484394b32ee5dd83833,
     type: 3}
-  moveSpeed: 0.5
+  coolTime: 0
+  moveSpeed: 1.5

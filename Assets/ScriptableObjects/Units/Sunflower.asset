@@ -16,12 +16,13 @@ MonoBehaviour:
   Description: "\uC77C\uC815 \uC2DC\uAC04\uC774 \uC9C0\uB098\uBA74 \uB3C8\uC778 \uD0DC\uC591\uC5D0\uB108\uC9C0\uB97C
     \uBC30\uCD9C\uD55C\uB2E4."
   Icon: {fileID: 21300000, guid: 356dcc270961224439f7f9820701de8e, type: 3}
-  maxHp: 5
+  maxHp: 300
   attackPower: 0
   attackDelay: 0
   range: 0
   cost: 50
   unitPrefab: {fileID: 2953164585944645855, guid: 417462d41901f7b4e963e97a29827f25,
     type: 3}
-  produceInterval: 2
+  coolTime: 7.5
+  produceInterval: 24
   produceAmount: 25

@@ -7,7 +7,7 @@ public class ZombieUnit : Unit
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private float attackRange = 0.6f;
     [SerializeField] private float attackDelay = 1.5f;
-    [SerializeField] private float laneTolerance = 0.1f; // 라인 허용 오차 (Y축)
+    [SerializeField] private float laneTolerance = 1f; // 라인 허용 오차 (Z축)
 
     private float attackTimer;
     private Unit target;

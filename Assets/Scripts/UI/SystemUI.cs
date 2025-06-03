@@ -7,6 +7,8 @@ public class SystemUI : MonoBehaviour
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private Slider volumeSlider;
 
+    [SerializeField] private SunRainManager sunRainManager;
+
     private bool isMenuOpen = false;
 
 
@@ -118,6 +120,7 @@ public class SystemUI : MonoBehaviour
     public void OnStartGameButton()
     {
         WaveManager.Instance.StartWaves();
+        sunRainManager.StartRain();
     }
 
 }
