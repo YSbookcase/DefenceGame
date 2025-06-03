@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +9,12 @@ public class SystemUI : MonoBehaviour
     [SerializeField] private Slider volumeSlider;
 
     [SerializeField] private SunRainManager sunRainManager;
+
+    [SerializeField] private UnitCardSelectionManager selectionManager;
+    [SerializeField] private Transform mainSlotParent;
+    [SerializeField] private GameObject unitCardPrefab;
+
+
 
     private bool isMenuOpen = false;
 
@@ -121,6 +128,15 @@ public class SystemUI : MonoBehaviour
     {
         WaveManager.Instance.StartWaves();
         sunRainManager.StartRain();
+
+        List<UnitData> selectedUnits = selectionManager.GetSelectedUnits();
+
+        foreach (var data in selectedUnits)
+        {
+            GameObject go = Instantiate(unitCardPrefab, mainSlotParent);
+            go.GetComponent<UnitCardUI>().Setup(data);
+        }
+
     }
 
 }
