@@ -22,19 +22,19 @@ public class Unit : PooledObject, IDamagable
 
     private void Start()
     {
-#if UNITY_EDITOR
-        if (!_isInitialized && testDataForEditorOnly != null)
-        {
-            Init(testDataForEditorOnly);
-            Debug.Log($"[Unit] 테스트용 데이터로 Init 실행: {_data.unitName}");
-        }
-#endif
+//#if UNITY_EDITOR
+//        if (!_isInitialized && testDataForEditorOnly != null)
+//        {
+//            Init(testDataForEditorOnly);
+//            Debug.Log($"[Unit] 테스트용 데이터로 Init 실행: {_data.unitName}");
+//        }
+//#endif
     }
 
 
     private void Update()
     {
-        // 공격, 탐지 등 구현 가능
+
     }
 
 

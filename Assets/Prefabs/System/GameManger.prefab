@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 381905011389529208}
   - component: {fileID: 440601075067634532}
-  - component: {fileID: 7235370388501730786}
   m_Layer: 0
   m_Name: PlayerManager
   m_TagString: Untagged
@@ -45,30 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1fcd509a0d17b542b361da51259b220, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &7235370388501730786
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 811556771741875856}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69860bdc73953304dbcb6912ea9ece96, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  cardSlots:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  cardPrefab: {fileID: 7316983757434110800, guid: c86cab62d9b98ce4a80b01b6562e344f,
-    type: 3}
-  unitDataList:
-  - {fileID: 11400000, guid: f336e85aa7671cf4c86164de16c439a3, type: 2}
-  - {fileID: 11400000, guid: 808e5bbe25cced446b447ef1bc1b95eb, type: 2}
+  selectionData: {fileID: 11400000, guid: 03574f4a8345e11499e61289ffd19e9b, type: 2}
 --- !u!1 &1837045873477811624
 GameObject:
   m_ObjectHideFlags: 0
@@ -78,7 +54,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3400388285238170242}
-  - component: {fileID: 5362173519837900848}
+  - component: {fileID: 4330693240958269178}
   m_Layer: 0
   m_Name: UnitPlacer
   m_TagString: Untagged
@@ -101,7 +77,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4865149461436336305}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5362173519837900848
+--- !u!114 &4330693240958269178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,7 +294,6 @@ GameObject:
   - component: {fileID: 4865149461436336305}
   - component: {fileID: 1617728285305854638}
   - component: {fileID: 4525540774450820993}
-  - component: {fileID: 5270110275794339429}
   m_Layer: 0
   m_Name: GameManger
   m_TagString: Untagged
@@ -370,24 +345,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcb5fd08abee6fb4db2708dc2e22ad1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &5270110275794339429
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8696267124166075262}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 061c0e8872b7e85408dfba8e20498f85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sunEnergyPrefab: {fileID: 7668534678740723190, guid: ad02f6bc5989e634db703f7ebc810a2a,
-    type: 3}
-  spawnInterval: 4
-  spawnY: 8
-  minX: -1
-  maxX: 25
 --- !u!1 &8922111689678033347
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,6 @@
 using UnityEngine;
 using DesignPattern;
-public class UnitPlacer : Singleton<UnitPlacer>
+public class UnitPlacer : MonoBehaviour
 {
     private GameObject previewObject;
     private UnitData currentData;

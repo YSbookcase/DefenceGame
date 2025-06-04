@@ -24,5 +24,5 @@ MonoBehaviour:
   unitPrefab: {fileID: 2953164585944645855, guid: 417462d41901f7b4e963e97a29827f25,
     type: 3}
   coolTime: 7.5
-  produceInterval: 24
+  produceInterval: 5
   produceAmount: 25

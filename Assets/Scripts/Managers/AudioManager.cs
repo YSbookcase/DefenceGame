@@ -4,7 +4,7 @@ using DesignPattern;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class AudioManager : Singleton<AudioManager>
+public class AudioManager : MonoBehaviour
 {
     private AudioSource _bgmSource;
     private ObjectPool _sfxPool;
@@ -15,8 +15,9 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] private SFXController _sfxPrefab;
 
     private int _currentBgmIndex = 0;
-
+  
     private void Awake() => Init();
+
 
 
     private void Start()
@@ -31,6 +32,9 @@ public class AudioManager : Singleton<AudioManager>
 
     private void Update()
     {
+
+        if (GameManager.Instance != null && GameManager.Instance.IsGameOver) return;
+
         // 현재 BGM이 끝났으면 다음 트랙으로
         if (!_bgmSource.isPlaying && _currentBgmList.Count > 0)
         {
@@ -38,6 +42,10 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    private void OnDestroy()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
 
     private void Init()
     {
@@ -56,6 +64,12 @@ public class AudioManager : Singleton<AudioManager>
     //  씬 로드시 BGM 리스트 갱신
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        if (this == null || _bgmSource == null)
+        {
+            Debug.LogWarning("[AudioManager] 씬 로드 시점에 AudioManager 또는 AudioSource가 유효하지 않음");
+            return;
+        }
+
         SetBgmListForScene(scene.name);
         PlayCurrentBgm();
     }
@@ -78,7 +92,26 @@ public class AudioManager : Singleton<AudioManager>
 
     private void PlayCurrentBgm()
     {
-        if (_currentBgmList.Count == 0) return;
+
+        if (_bgmSource == null || _currentBgmList.Count == 0)
+        {
+            Debug.LogWarning("[AudioManager] BGM 재생 불가 (AudioSource 또는 BGM 리스트 없음)");
+            return;
+        }
+
+        if (_currentBgmIndex >= _currentBgmList.Count)
+        {
+            Debug.LogWarning("[AudioManager] 인덱스 초과로 BGM 재생 실패");
+            return;
+        }
+
+        AudioClip clip = _currentBgmList[_currentBgmIndex];
+        if (clip == null)
+        {
+            Debug.LogWarning("[AudioManager] BGM 클립이 null입니다.");
+            return;
+        }
+
 
         _bgmSource.clip = _currentBgmList[_currentBgmIndex];
         _bgmSource.Play();
@@ -86,6 +119,7 @@ public class AudioManager : Singleton<AudioManager>
 
     private void NextBgm()
     {
+
         _currentBgmIndex = (_currentBgmIndex + 1) % _currentBgmList.Count;
         PlayCurrentBgm();
     }
@@ -101,6 +135,14 @@ public class AudioManager : Singleton<AudioManager>
         }
     }
 
+    public void StopBgm()
+    {
+        if (_bgmSource != null && _bgmSource.isPlaying)
+        {
+            _bgmSource.Stop();
+        }
+    }
+
     public float GetBgmVolume()
     {
         return _bgmSource != null ? _bgmSource.volume : 0f;
@@ -111,6 +153,7 @@ public class AudioManager : Singleton<AudioManager>
         if (_bgmSource != null)
             _bgmSource.volume = Mathf.Clamp01(volume);
     }
+
 
 
     public SFXController GetSFX()

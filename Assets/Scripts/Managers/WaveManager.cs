@@ -4,7 +4,7 @@ using UnityEngine;
 using DesignPattern;
 using UnityEngine.SceneManagement;
 
-public class WaveManager : Singleton<WaveManager>
+public class WaveManager : MonoBehaviour
 {
     [SerializeField] private List<WaveData> waveList;
 

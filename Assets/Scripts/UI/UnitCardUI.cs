@@ -32,7 +32,7 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
             return;
 
         // 배치 가능한 유닛 프리뷰 생성
-        UnitPlacer.Instance.StartPlacing(unitData);
+        GameManager.Instance.Placer.StartPlacing(unitData);
     }
 
 
