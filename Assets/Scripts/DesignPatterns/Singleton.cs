@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace DesignPattern
@@ -7,14 +5,19 @@ namespace DesignPattern
     public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
     {
         private static T _instance;
+
         public static T Instance
         {
             get
             {
-                if(_instance == null)
+                if (_instance == null || _instance.Equals(null))
                 {
                     _instance = FindObjectOfType<T>();
-                    DontDestroyOnLoad(_instance);
+
+                    if (_instance != null && _instance.transform.parent == null)
+                    {
+                        DontDestroyOnLoad(_instance.gameObject);
+                    }
                 }
                 return _instance;
             }
@@ -22,14 +25,22 @@ namespace DesignPattern
 
         protected void SingletonInit()
         {
-            if(_instance != null && _instance != this)
+            if (_instance != null && _instance != this)
             {
-                Destroy(gameObject);            
+                Destroy(gameObject);
             }
             else
             {
                 _instance = this as T;
-                DontDestroyOnLoad(_instance);
+
+                if (transform.parent == null) // 루트만 허용
+                {
+                    DontDestroyOnLoad(gameObject);
+                }
+                else
+                {
+                    Debug.LogWarning($"[Singleton<{typeof(T).Name}>] 루트 GameObject가 아니므로 DontDestroyOnLoad가 적용되지 않습니다.");
+                }
             }
         }
     }
