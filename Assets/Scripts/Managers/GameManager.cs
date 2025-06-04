@@ -13,6 +13,10 @@ public class GameManager : Singleton<GameManager>
 
     public UnitPlacer Placer { get; private set;  }
 
+    public SystemUI UI { get; private set; }
+
+    public WaveManager Wave { get; private set; }
+
     private void Awake() => Init();
 
     private void Init()
@@ -22,14 +26,22 @@ public class GameManager : Singleton<GameManager>
         Player = GetComponentInChildren<PlayerManager>();
         Tile = GetComponentInChildren<TileManager>();
         Placer = GetComponentInChildren<UnitPlacer>();
+        UI = FindObjectOfType<SystemUI>();
+        Wave = GetComponentInChildren<WaveManager>();
+
 
         if (Audio == null) Debug.LogError("AudioManager is missing");
         if (Player == null) Debug.LogError("PlayerManager is missing");
         if (Tile == null) Debug.LogError("TileManager is missing");
-        if (Tile == null) Debug.LogError("UnitPlacerr is missing");
-
+        if (Placer == null) Debug.LogError("UnitPlacer is missing");
+        if (UI == null) Debug.LogError("SystemUI is missing from the scene.");
+        if (Wave == null) Debug.LogError("WaveManage is missing");
     }
 
+    public void RegisterUI(SystemUI ui)
+    {
+        UI = ui;
+    }
 
     // ¾À ÀüÈ¯
     public void LoadScene(string sceneName)
@@ -45,6 +57,43 @@ public class GameManager : Singleton<GameManager>
 #else
         Application.Quit(); // ºôµå È¯°æ¿¡¼­ Á¾·á
 #endif
+    }
+
+
+    private bool isGameOver = false;
+    public bool IsGameOver => isGameOver;
+
+    public void GameOver()
+    {
+
+        Debug.Log($"[GameManager] GameOver È£ÃâµÊ {isGameOver}");
+
+        if (isGameOver) return;
+        isGameOver = true;
+
+        Debug.Log("Game Over!");
+        Wave?.StopWaves();
+        Time.timeScale = 0f;
+
+        Audio.StopBgm();
+        UI.ShowGameOverUI();  
+    }
+
+    public void Victory()
+    {
+        Debug.Log("[GameManager] Victory È£ÃâµÊ");
+
+        Wave?.StopWaves();
+
+        UI?.ShowVictoryUI(); // ½Â¸® UI Ç¥½Ã µî
+    }
+
+
+
+    public void ResetState()
+    {
+        isGameOver = false;
+       
     }
 
 }

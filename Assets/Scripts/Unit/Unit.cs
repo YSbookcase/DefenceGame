@@ -34,7 +34,7 @@ public class Unit : PooledObject, IDamagable
 
     private void Update()
     {
-        // 공격, 탐지 등 구현 가능
+
     }
 
 
@@ -43,15 +43,15 @@ public class Unit : PooledObject, IDamagable
         Debug.Log("[Unit] Init 호출됨");
         _data = data;
         _currentHp = data.maxHp;
-        //Debug.Log($"[Init] {data.unitName} 체력 초기화: {_currentHp}");
-        _isInitialized = true;
+        Debug.Log($"[Init] {data.unitName} 체력 초기화: {_currentHp}");
+        //_isInitialized = true;
     }
 
 
     public virtual void TakeDamage(int damage)
     {
         _currentHp -= damage;
-        //Debug.Log($"[Unit] 피해 {damage} → 남은 체력 {_currentHp}");
+        Debug.Log($"[Unit] 피해 {damage} → 남은 체력 {_currentHp}");
 
         if (_currentHp <= 0)
             Die();

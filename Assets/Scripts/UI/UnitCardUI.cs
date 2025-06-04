@@ -12,6 +12,11 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
     private Transform originalParent;
     private GameObject previewObject;
 
+
+    private void Update()
+    {
+        UpdateVisual();
+    }
     public void Setup(UnitData data)
     {
         unitData = data;
@@ -21,19 +26,15 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
         UpdateVisual();
     }
 
-    private void Update()
-    {
-        UpdateVisual();
-    }
-
     public void OnPointerClick(PointerEventData eventData)
     {
         if (GameManager.Instance.Player.Money.Value < unitData.cost)
             return;
 
         // 배치 가능한 유닛 프리뷰 생성
-        UnitPlacer.Instance.StartPlacing(unitData);
+        GameManager.Instance.Placer.StartPlacing(unitData);
     }
+
 
 
     private void UpdateVisual()
@@ -99,6 +100,7 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                         if (unitScript != null)
                         {
                             unitScript.currentTile = tile;
+                            unitScript.Init(unitData);
                         }
 
                     }

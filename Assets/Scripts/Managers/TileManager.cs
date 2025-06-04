@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DesignPattern;
 
-public class TileManager : Singleton<TileManager>
+public class TileManager : MonoBehaviour
 {
     [SerializeField] private float cellSize = 3f;
 

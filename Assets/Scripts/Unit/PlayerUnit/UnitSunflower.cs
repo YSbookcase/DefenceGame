@@ -12,8 +12,14 @@ public class UnitSunflower : Unit
         base.Init(data);
         if (data is SunflowerData sunflower)
         {
+            Debug.Log("[Unit] Init 호출됨");
             StartCoroutine(ProduceSun(sunflower.produceInterval, sunflower.produceAmount));
         }
+        else
+            {
+                Debug.LogWarning("[Sunflower] Init 실패 - 데이터 캐스팅 실패");
+            }
+        
     }
 
     private IEnumerator ProduceSun(float interval, int amount)

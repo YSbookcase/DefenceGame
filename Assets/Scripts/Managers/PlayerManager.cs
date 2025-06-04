@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using DesignPattern;
 
-public class PlayerManager : Singleton<PlayerManager>
+public class PlayerManager : MonoBehaviour
 {
     public ObservableProperty<int> Money { get; private set; } = new(0);
+
+    [SerializeField] private SelectionData selectionData;
+
+    public List<UnitData> SelectedUnits { get; private set; } = new();
+
+
+    private void Awake()
+    {
+        SelectedUnits = new List<UnitData>(selectionData.selectedUnits);
+    }
 
 
     private void Update()
@@ -28,6 +38,11 @@ public class PlayerManager : Singleton<PlayerManager>
     }
 
 
+
+    public void SetSelectedUnits(List<UnitData> units)
+    {
+        SelectedUnits = new List<UnitData>(units);
+    }
 
     public void AddMoney(int amount)
     {

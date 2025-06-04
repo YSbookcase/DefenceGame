@@ -25,9 +25,17 @@ public class MoneyUI : MonoBehaviour
         moneyText.text = $"{money}";
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
-        if (GameManager.Instance != null)
-            GameManager.Instance.Player.Money.Unsubscribe(UpdateUI);
+        try
+        {
+            var gm = GameManager.Instance;
+            if (gm != null && gm.Player != null && gm.Player.Money != null)
+                gm.Player.Money.Unsubscribe(UpdateUI);
+        }
+        catch (System.Exception e)
+        {
+            Debug.LogWarning($"[MoneyUI] OnDisable ¿¹¿Ü: {e.Message}");
+        }
     }
 }

@@ -7,7 +7,8 @@ public class ZombieUnit : Unit
     [SerializeField] private float moveSpeed = 1.5f;
     [SerializeField] private float attackRange = 0.6f;
     [SerializeField] private float attackDelay = 1.5f;
-    [SerializeField] private float laneTolerance = 0.1f; // 라인 허용 오차 (Y축)
+    [SerializeField] private float laneTolerance = 1f; // 라인 허용 오차 (Z축)
+    [SerializeField] private float detectRange = 2f;
 
     private float attackTimer;
     private Unit target;
@@ -34,6 +35,10 @@ public class ZombieUnit : Unit
             {
                 target = null;
             }
+            else
+            {
+                return;
+            }
         }
 
         MoveForward();
@@ -42,7 +47,7 @@ public class ZombieUnit : Unit
 
     private void MoveForward()
     {
-        transform.Translate(Vector3.left * moveSpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
     }
 
     private void FindTargetInSameLane()
@@ -57,7 +62,7 @@ public class ZombieUnit : Unit
             float zDiff = Mathf.Abs(transform.position.z - unit.transform.position.z);
             float xDiff = transform.position.x - unit.transform.position.x;
 
-            if (zDiff <= laneTolerance && xDiff >= 0f && xDiff <= attackRange)
+            if (zDiff <= laneTolerance && xDiff >= 0f && xDiff <= detectRange)
             {
                 target = unit;
                 break;
@@ -68,6 +73,7 @@ public class ZombieUnit : Unit
     private bool IsTargetInRange()
     {
         float xDist = transform.position.x - target.transform.position.x;
+        //Debug.Log($"[거리 체크] xDist = {xDist}");
         return xDist >= 0f && xDist <= attackRange;
     }
 
@@ -96,7 +102,7 @@ public class ZombieUnit : Unit
         if (target != null && target.IsAlive())
         {
             target.TakeDamage(GetAttackPower());
-            //Debug.Log($"[Zombie] {target.GetUnitName()} 공격함");
+            Debug.Log($"[Zombie] {target.GetUnitName()} 공격함");
 
             if (!target.IsAlive())
             {
