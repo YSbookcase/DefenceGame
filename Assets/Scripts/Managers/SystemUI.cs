@@ -4,67 +4,51 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using DesignPattern;
 
-
 public class SystemUI : MonoBehaviour
-{ 
+{
     [SerializeField] private GameObject menuPanel;
     [SerializeField] private GameObject gameOverPanel;
-
+    [SerializeField] private GameObject victoryPanel;
     [SerializeField] private Slider volumeSlider;
 
     [SerializeField] private SunRainManager sunRainManager;
-
-    
     [SerializeField] private UnitCardSelectionManager selectionManager;
-    [SerializeField] private List<UnitData> playerCardList;
 
+    [SerializeField] private List<UnitData> playerCardList;
     [SerializeField] private Transform mainSlotParent;
     [SerializeField] private GameObject unitCardPrefab;
-  
-
 
     private bool isMenuOpen = false;
 
-
     private void Awake()
     {
-        // menuPanel이 미리 지정되지 않은 경우, 태그나 이름으로 찾아 할당
+
+        GameManager.Instance.RegisterUI(this); 
+
+
+
         if (menuPanel == null)
         {
-            GameObject found = GameObject.FindWithTag("Menu"); // 또는 "MenuPanel" 이름 사용
+            GameObject found = GameObject.FindWithTag("Menu");
             if (found != null)
-            {
                 menuPanel = found;
-            }
-            else
-            {
-                //Debug.LogWarning("Menu Panel을 찾을 수 없습니다. 이 씬에는 메뉴가 없을 수 있습니다.");
-            }
-        }
-    }
-
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Escape) && menuPanel != null)
-        {
-            ToggleMenu();
         }
     }
 
     private void OnEnable()
     {
         Debug.Log("[SystemUI] OnEnable 호출됨");
+        GameManager.Instance.RegisterUI(this);
+
         SceneManager.sceneLoaded += OnSceneLoaded;
 
-        // 씬이 이미 로드된 상태일 수도 있으므로 즉시 검사
+        // 씬이 이미 로드된 경우 수동 실행
         Scene currentScene = SceneManager.GetActiveScene();
         if (currentScene.name == "MainGame")
         {
-            Debug.Log("[SystemUI] 현재 씬이 MainGame → 직접 초기화 실행");
             AssignDependencies();
             InitializeUI();
         }
-
     }
 
     private void OnDisable()
@@ -81,15 +65,19 @@ public class SystemUI : MonoBehaviour
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log($"[SystemUI] OnSceneLoaded 호출됨 - 씬: {scene.name}");
-        AssignDependencies();
-        InitializeUI();
+
+        if (scene.name == "MainGame")
+        {
+            AssignDependencies();
+            InitializeUI();
+        }
     }
 
     private void AssignDependencies()
     {
         if (sunRainManager == null)
             sunRainManager = FindObjectOfType<SunRainManager>();
-        Debug.Log("[SystemUI] SunRainManager 지나침");
+
         if (selectionManager == null)
             selectionManager = FindObjectOfType<UnitCardSelectionManager>();
 
@@ -103,12 +91,26 @@ public class SystemUI : MonoBehaviour
             menuPanel = GameObject.FindWithTag("Menu");
 
         if (gameOverPanel == null)
-            gameOverPanel = GameObject.Find("GameOverUI");
+        {
+            GameObject go = GameObject.FindWithTag("GameOver");
+            if (go != null) gameOverPanel = go;
+        }
+
+        if (victoryPanel == null)
+        {
+            GameObject v = GameObject.Find("VictoryUI");
+            if (v != null) victoryPanel = v;
+        }
+
+        //  초기 비활성화 처리
+        if (gameOverPanel) gameOverPanel.SetActive(false);
+        if (victoryPanel) victoryPanel.SetActive(false);
+
+        Debug.Log($"[SystemUI] GameOverPanel 할당 상태: {(gameOverPanel == null ? "null" : gameOverPanel.name)}");
     }
 
     private void InitializeUI()
     {
-        // 볼륨 슬라이더
         if (volumeSlider != null && GameManager.Instance?.Audio != null)
         {
             volumeSlider.onValueChanged.RemoveListener(OnVolumeChanged);
@@ -117,11 +119,8 @@ public class SystemUI : MonoBehaviour
             volumeSlider.onValueChanged.AddListener(OnVolumeChanged);
         }
 
-        // 메뉴 닫기
-        if (menuPanel != null)
-            CloseMenu();
+        CloseMenu();
 
-        // 유닛 카드 초기화
         var playerUnits = GameManager.Instance?.Player?.SelectedUnits;
         if (selectionManager != null && playerUnits != null)
         {
@@ -132,14 +131,23 @@ public class SystemUI : MonoBehaviour
         Debug.Log($"[SystemUI] 초기 카드 수: {playerUnits?.Count ?? 0}");
     }
 
+    public void OnStartGameButton()
+    {
+        GameManager.Instance.Wave.StartWaves();
 
+        if (sunRainManager == null)
+        {
+            Debug.LogWarning("[SystemUI] SunRainManager가 씬에 없습니다.");
+            return;
+        }
 
-
-
+        sunRainManager.StartRain();
+        CleanSstMainCardSlots();
+    }
 
     public void StartGame(string sceneName)
     {
-        ResumeGame(); // 씬 이동 전 시간 재개
+        ResumeGame();
         GameManager.Instance.LoadScene(sceneName);
     }
 
@@ -158,8 +166,8 @@ public class SystemUI : MonoBehaviour
     public void RestartScene()
     {
         ResumeGame();
-        string currentScene = SceneManager.GetActiveScene().name;
-        SceneManager.LoadScene(currentScene);
+        GameManager.Instance.Wave?.ResetState(); // 웨이브 초기화
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public void ToggleMenu()
@@ -173,44 +181,24 @@ public class SystemUI : MonoBehaviour
     public void OpenMenu()
     {
         if (menuPanel == null) return;
-
         isMenuOpen = true;
-        menuPanel?.SetActive(true);
+        menuPanel.SetActive(true);
         Time.timeScale = 0f;
     }
 
     public void CloseMenu()
     {
         if (menuPanel == null) return;
-
         isMenuOpen = false;
-        menuPanel?.SetActive(false);
+        menuPanel.SetActive(false);
         Time.timeScale = 1f;
     }
 
-    private void ResumeGame()
-    {
-        Time.timeScale = 1f;
-    }
+    private void ResumeGame() => Time.timeScale = 1f;
+
     private void OnVolumeChanged(float value)
     {
         GameManager.Instance.Audio.SetBgmVolume(value);
-    }
-
-    public void OnStartGameButton()
-    {
-        GameManager.Instance.Wave.StartWaves();
-
-        if (sunRainManager == null)
-        {
-            Debug.LogWarning("[SystemUI] SunRainManager가 씬에 없습니다.");
-            return;
-        }
-
-        sunRainManager.StartRain();
-
-        CleanSstMainCardSlots();
-
     }
 
     private void CleanSstMainCardSlots()
@@ -235,19 +223,15 @@ public class SystemUI : MonoBehaviour
         }
     }
 
-
     private void OnUnitListChanged(List<UnitData> newList)
     {
         Debug.Log($"[SystemUI] 구독자 알림: 유닛 카드 수 = {newList.Count}");
     }
 
-
     public void ShowGameOverUI()
     {
         if (gameOverPanel != null)
         {
-    
-        
             gameOverPanel.SetActive(true);
         }
         else
@@ -256,4 +240,15 @@ public class SystemUI : MonoBehaviour
         }
     }
 
+    public void ShowVictoryUI()
+    {
+        if (victoryPanel != null)
+        {
+            victoryPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.LogWarning("[SystemUI] VictoryPanel이 연결되지 않았습니다.");
+        }
+    }
 }

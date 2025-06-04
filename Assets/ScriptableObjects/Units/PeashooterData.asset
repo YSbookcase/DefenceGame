@@ -16,12 +16,11 @@ MonoBehaviour:
   Description: "\uC77C\uC9C1\uC120 \uBC29\uD5A5\uC73C\uB85C \uD22C\uC0AC\uCCB4\uB97C
     \uBC1C\uC0AC\uD558\uC5EC \uC801\uC744 \uACF5\uACA9\uD55C\uB2E4."
   Icon: {fileID: 21300000, guid: 63e1dfb8212a375428f4a12ad5f43975, type: 3}
-  maxHp: 5
-  attackPower: 1
+  maxHp: 300
+  attackPower: 20
   attackDelay: 1
   range: 30
   cost: 100
-  unitPrefab: {fileID: 2953164585944645855, guid: f0f1b3b93c55da3409d0d921fcf68f3d,
-    type: 3}
+  unitPrefab: {fileID: 1996767962855262, guid: 462b3539d8d912b488980304d11c1fae, type: 3}
   coolTime: 0
   bulletSpeed: 10

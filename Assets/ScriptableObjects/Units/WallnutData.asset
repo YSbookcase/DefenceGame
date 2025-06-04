@@ -21,7 +21,6 @@ MonoBehaviour:
   attackDelay: 0
   range: 0
   cost: 50
-  unitPrefab: {fileID: 2953164585944645855, guid: 0bb2c1ee5363c9345b9a25f3865ae036,
-    type: 3}
+  unitPrefab: {fileID: 1741276027538082, guid: a8657c09ff357f94c92d0c158d9d26c4, type: 3}
   coolTime: 0
   defenseMultiplier: 0

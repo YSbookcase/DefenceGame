@@ -5,7 +5,7 @@ public class Bullet : PooledObject
 {
     private Rigidbody _rigidbody;
 
-    [SerializeField] private float maxLifeTime = 3f;
+    [SerializeField] private float maxLifeTime = 5f;
     private float currentLifeTime;
 
     private int attackPower;

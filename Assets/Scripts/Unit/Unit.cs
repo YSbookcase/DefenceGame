@@ -22,13 +22,13 @@ public class Unit : PooledObject, IDamagable
 
     private void Start()
     {
-//#if UNITY_EDITOR
-//        if (!_isInitialized && testDataForEditorOnly != null)
-//        {
-//            Init(testDataForEditorOnly);
-//            Debug.Log($"[Unit] 테스트용 데이터로 Init 실행: {_data.unitName}");
-//        }
-//#endif
+#if UNITY_EDITOR
+        if (!_isInitialized && testDataForEditorOnly != null)
+        {
+            Init(testDataForEditorOnly);
+            Debug.Log($"[Unit] 테스트용 데이터로 Init 실행: {_data.unitName}");
+        }
+#endif
     }
 
 
@@ -43,15 +43,15 @@ public class Unit : PooledObject, IDamagable
         Debug.Log("[Unit] Init 호출됨");
         _data = data;
         _currentHp = data.maxHp;
-        //Debug.Log($"[Init] {data.unitName} 체력 초기화: {_currentHp}");
-        _isInitialized = true;
+        Debug.Log($"[Init] {data.unitName} 체력 초기화: {_currentHp}");
+        //_isInitialized = true;
     }
 
 
     public virtual void TakeDamage(int damage)
     {
         _currentHp -= damage;
-        //Debug.Log($"[Unit] 피해 {damage} → 남은 체력 {_currentHp}");
+        Debug.Log($"[Unit] 피해 {damage} → 남은 체력 {_currentHp}");
 
         if (_currentHp <= 0)
             Die();

@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: WaveData1-1
   m_EditorClassIdentifier: 
   enemyPrefabs:
-  - {fileID: 3486634704476419877, guid: 0c3bf0374963c484394b32ee5dd83833, type: 3}
+  - {fileID: 5870629044615498280, guid: 3d7b4071d1cc28d46a596db0ed7dde8d, type: 3}
+  enemyDataList:
+  - {fileID: 11400000, guid: 9953907e967668e4b9cb7e71f7d508a9, type: 2}
   enemyCount: 20
-  spawnInterval: 2
+  spawnInterval: 3

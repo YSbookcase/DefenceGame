@@ -38,6 +38,10 @@ public class GameManager : Singleton<GameManager>
         if (Wave == null) Debug.LogError("WaveManage is missing");
     }
 
+    public void RegisterUI(SystemUI ui)
+    {
+        UI = ui;
+    }
 
     // ¾À ÀüÈ¯
     public void LoadScene(string sceneName)
@@ -61,16 +65,35 @@ public class GameManager : Singleton<GameManager>
 
     public void GameOver()
     {
+
+        Debug.Log($"[GameManager] GameOver È£ÃâµÊ {isGameOver}");
+
         if (isGameOver) return;
         isGameOver = true;
 
         Debug.Log("Game Over!");
+        Wave?.StopWaves();
         Time.timeScale = 0f;
 
         Audio.StopBgm();
         UI.ShowGameOverUI();  
     }
 
+    public void Victory()
+    {
+        Debug.Log("[GameManager] Victory È£ÃâµÊ");
 
+        Wave?.StopWaves();
+
+        UI?.ShowVictoryUI(); // ½Â¸® UI Ç¥½Ã µî
+    }
+
+
+
+    public void ResetState()
+    {
+        isGameOver = false;
+       
+    }
 
 }

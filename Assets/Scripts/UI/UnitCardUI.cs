@@ -100,6 +100,7 @@ public class UnitCardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDr
                         if (unitScript != null)
                         {
                             unitScript.currentTile = tile;
+                            unitScript.Init(unitData);
                         }
 
                     }

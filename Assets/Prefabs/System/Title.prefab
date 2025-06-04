@@ -271,8 +271,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   volumeSlider: {fileID: 0}
   sunRainManager: {fileID: 0}
+  selectionManager: {fileID: 0}
+  playerCardList: []
+  mainSlotParent: {fileID: 0}
+  unitCardPrefab: {fileID: 0}
 --- !u!1 &2198728394545031745
 GameObject:
   m_ObjectHideFlags: 0
@@ -408,8 +413,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   volumeSlider: {fileID: 0}
   sunRainManager: {fileID: 0}
+  selectionManager: {fileID: 0}
+  playerCardList: []
+  mainSlotParent: {fileID: 0}
+  unitCardPrefab: {fileID: 0}
 --- !u!1 &4110182270317666679
 GameObject:
   m_ObjectHideFlags: 0
@@ -756,8 +766,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuPanel: {fileID: 0}
+  gameOverPanel: {fileID: 0}
   volumeSlider: {fileID: 0}
   sunRainManager: {fileID: 0}
+  selectionManager: {fileID: 0}
+  playerCardList: []
+  mainSlotParent: {fileID: 0}
+  unitCardPrefab: {fileID: 0}
 --- !u!1 &5170985647166302492
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,12 @@ public class GameOverButtonHandler : MonoBehaviour
 
 
         // 수동으로 싱글톤 초기화
-
-
-        Destroy(gameObject);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.ResetState(); // 수동 초기화 함수
+            GameManager.Instance?.Wave?.ResetState();
+        }
+       
 
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
